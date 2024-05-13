@@ -24,14 +24,23 @@ const getAlbumWithId = function () {
 // funzione che riporta l'album con tutte le tracce in html
 const albumHtml = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
+  const realeaseYear = album.release_date.split("-");
+  // da sistemare meglio
   const headerAlbumPage = `
-        <img class="w-25" src="./assets/imgs/main/image-1.jpg" alt="Foto album"/>
+        <img class="w-25" src="${album.cover_big}" alt="Foto album"/>
         <div class="d-flex flex-column justify-content-end ms-2">
             <h6>ALBUM</h6>
-            <h1>Titolo album</h1>
-            <div class="d-flex align-items-start align-content-end">
-                <img id="foto-artista" src="./assets/imgs/main/image-12.jpg" alt="" />
-                <p>Descrizione</p>
+            <h1>${album.title}</h1>
+            <div class="d-flex gap-2">
+                <img id="foto-artista" src="${
+                  album.artist.picture_small
+                }" alt="" />
+                <p>${album.artist.name} - ${realeaseYear[0]} - ${
+    album.nb_tracks
+  } brani, 
+                ${Math.floor(album.duration / 60)} min ${
+    album.duration % 60
+  } sec</p>
             </div>
         </div>`;
   colBodyAlbumPage.innerHTML = headerAlbumPage;
@@ -46,14 +55,14 @@ const albumHtml = function (album) {
             <p class="m-0">${i + 1}</p>
         </div>
         <div class="col-6 p-0">
-            <p class="m-0">${track.title}</p>
-            <p class="m-0">nome artista</p>
+            <h5 class="m-0">${track.title}</h5>
+            <p class="m-0 text-info">${track.artist.name}</p>
         </div>
         <div class="col-4 p-0 d-flex align-items-center">
             <p class="m-0">123</p>
         </div>
         <div class="col-1 p-0 d-flex align-items-center justify-content-center">
-            <span>or</span>
+            <p class="m-0">${(track.duration / 60).toFixed(2)}</p>
         </div>
         `;
     containerTracks.appendChild(rowTrack);
