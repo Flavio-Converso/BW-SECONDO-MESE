@@ -1,0 +1,37 @@
+.bg-green-spotify {
+    background-color: #16e05d;
+}
+
+.green-spotify {
+    color: #16e05d;
+}
+
+.personal-img {
+    min-width: 90px;
+    width: 100%;
+    height: 100%;
+
+}
+
+.play-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #16e05d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.card:hover .play-badge {
+    opacity: 1;
+}
+
+.playButton {
+    width: 50px;
+    position: relative;
+    left: 2px;
+}
