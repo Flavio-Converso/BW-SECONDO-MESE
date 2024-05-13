@@ -1,0 +1,39 @@
+html,
+body {
+  height: 100vh;
+}
+main {
+  height: 90%;
+  background-color: rgb(57, 55, 55);
+}
+
+/* Contenitore flessibile con altezza al 100% */
+.container-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Imposta altezza delle righe al 100% */
+.row-height {
+  height: 100%;
+}
+
+/* Colonna tutta nera */
+.side-bar {
+  background-color: black;
+  height: 100%;
+  color: white; /* Colore del testo bianco */
+}
+
+.column-dx {
+  color: white;
+  background-color: black;
+  height: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .column-dx {
+    display: none;
+  }
+}
