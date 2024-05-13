@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify music player</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+<div class="music-player">
+    <div class="song-bar">
+        <div class="song-infos">
+            <div class="image-container">
+                <img src="https://place-hold.it/200" alt="" />
+            </div>
+            <div class="song-description">
+                <p class="title">placeholder</p>
+                <p class="artist">placeholder</p>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="far fa-heart"></i>
+        </div>
+    </div>
+    <div class="progress-controller">
+        <div class="control-buttons">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-step-backward"></i>
+            <i class="play-pause fas fa-play"></i>
+            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-undo-alt"></i>
+        </div>
+        <div class="progress-container">
+            <span class="current-time"></span>
+            <div class="progress-bar">
+                <div class="progress"></div>
+                <audio src="./Interstellar Official Soundtrack  Cornfield Chase – Hans Zimmer  WaterTower.mp3"></audio>
+            </div>
+            <span class="total-time"></span>
+        </div>
+    </div>
+    <div class="other-features">
+        <i class="fas fa-list-ul"></i>
+        <i class="fas fa-solid fa-microphone"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--secondary-color)" class="bi bi-speaker" viewBox="0 0 16 16">
+          <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+          <path d="M8 4.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5M8 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4m0 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-3.5 1.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+        </svg>
+        <div class="volume-bar">
+            <i class="fas fa-volume-down"></i>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
