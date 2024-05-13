@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isPlaying) {
             audioElement.play();
             playPauseButton.classList.remove("fa-play");
-            playPauseButton.classList.add("fa-pause", "active");
+            playPauseButton.classList.add("fa-pause");
         } else {
             audioElement.pause();
-            playPauseButton.classList.remove("fa-pause", "active");
+            playPauseButton.classList.remove("fa-pause");
             playPauseButton.classList.add("fa-play");
         }
     }
