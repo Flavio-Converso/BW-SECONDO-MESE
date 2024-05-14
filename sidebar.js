@@ -47,3 +47,26 @@ document.getElementById("search").addEventListener("keydown", function (event) {
     search(this.value);
   }
 });
+
+let titoloAlbum = document.getElementById("titoloAlbum");
+let artistaAlbum = document.getElementsByClassName("artistaAlbum");
+let fotoAlbum = document.getElementById("fotoAlbum");
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedData = localStorage.getItem("searchResult");
+
+  const albums = JSON.parse(storedData);
+  if (albums.length > 0) {
+    const firstAlbum = albums[0];
+    let titoloAlbum = document.getElementById("titoloAlbum");
+    document.getElementsByClassName("artistaAlbum")[0].textContent =
+      firstAlbum.artistName;
+    document.getElementsByClassName("artistaAlbum")[1].textContent =
+      firstAlbum.artistName;
+    let fotoAlbum = document.getElementById("fotoAlbum");
+
+    titoloAlbum.textContent = firstAlbum.albumTitle;
+    artistaAlbum.textContent = firstAlbum.artistName;
+    fotoAlbum.src = firstAlbum.albumCover;
+  }
+});
