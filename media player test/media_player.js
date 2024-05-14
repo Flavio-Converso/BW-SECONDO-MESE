@@ -238,3 +238,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+
+
+
+
+
+
+
+
+//PROVE 
+//FUNZIONE RICERCA
+function search(searchInput) {
+    fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + searchInput
+    )
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Errore nel recupero dei dettagli dell'evento");
+            }
+        })
+        .then((searchResult) => {
+            console.log(searchResult);
+            store(searchResult);
+        })
+        .catch((err) => {
+            console.log("ERRORE", err);
+        });
+}
