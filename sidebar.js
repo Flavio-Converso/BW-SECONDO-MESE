@@ -91,37 +91,35 @@ document.addEventListener("DOMContentLoaded", function () {
       (artista) => (artista.textContent = firstAlbum.artistName)
     );
     fotoAlbum.src = firstAlbum.albumCover;
+  }
 
-    // Create cards for each album
-    for (let i = 1; i < albums.length; i++) {
-      // start from 1 since first album is shown elsewhere
-      let card = document.createElement("div");
-      card.classList.add("col-12", "col-sm-6", "col-lg-4");
-      card.innerHTML = `
-          <a href="#" class="text-decoration-none">
-              <div class="card mb-3 grey-horizontal-card position-relative">
-                  <div class="row g-0">
-                      <div class="col">
-                          <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
-                              alt="immagine album" />
-                      </div>
-                      <div class="col d-flex align-items-center">
-                          <div class="card-body">
-                              <h5 id="titoloHorizontalCard"
-                                  class="card-title d-flex justify-content-center text-white">
-                                  ${albums[i].albumTitle}
-                              </h5>
+  for (let i = 1; i < albums.length; i++) {
+    let card = document.createElement("div");
+    card.classList.add("col-12", "col-sm-6", "col-lg-4");
+    card.innerHTML = `
+              <a href="#" class="text-decoration-none">
+                  <div class="card mb-3 grey-horizontal-card position-relative">
+                      <div class="row g-0">
+                          <div class="col">
+                              <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
+                                  alt="immagine album" />
+                          </div>
+                          <div class="col d-flex align-items-center">
+                              <div class="card-body">
+                                  <h5 id="titoloHorizontalCard"
+                                      class="card-title d-flex justify-content-center text-white">
+                                      ${albums[i].albumTitle}
+                                  </h5>
+                              </div>
                           </div>
                       </div>
+                      <div class="play-badge">
+                          <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
+                              alt="play button" />
+                      </div>
                   </div>
-                  <div class="play-badge">
-                      <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
-                          alt="play button" />
-                  </div>
-              </div>
-          </a>
-          </div>`;
-      document.getElementById("printHorizontalCards").appendChild(card);
-    }
+              </a>
+              </div>`;
+    document.getElementById("printHorizontalCards").appendChild(card);
   }
 });
