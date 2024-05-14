@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   console.log(albums);
 
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < albums.length; i++) {
     let card = document.createElement("div");
     card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
     card.innerHTML = `
