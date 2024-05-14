@@ -1,5 +1,5 @@
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-const idAlbum = "54852182";
+const idAlbum = "513551092";
 const url = apiUrl + idAlbum;
 
 // funzione per recuperare i dati dell'album tramite il suo id
@@ -32,39 +32,15 @@ const albumHtml = function (album) {
   const imgArtist = document.querySelector("#description > img");
   imgArtist.setAttribute("src", album.artist.picture);
   const description = document.querySelector("#description > p");
-  description.innerHTML =
-    album.artist.name +
-    " - " +
-    realeaseYear[0] +
-    " - " +
-    album.nb_tracks +
-    " brani, " +
-    Math.floor(album.duration / 60) +
-    " min " +
-    (album.duration % 60) +
-    " sec";
-  // da sistemare meglio
-  /*
-  const headerAlbumPage = `
-        <img class="w-25 h-25 d-flex align-items-center" src="${
-          album.cover_big
-        }" alt="Foto album"/>
-        <div class="d-flex flex-column justify-content-end ms-2">
-            <h6>ALBUM</h6>
-            <h1 class="display-6">${album.title}</h1>
-            <div class="d-flex gap-2">
-                <img id="foto-artista" src="${
-                  album.artist.picture_small
-                }" alt="" />
-                <p class="m-0">${album.artist.name} - ${realeaseYear[0]} - ${
+  const descriptionMobile = document.querySelector("#description > p");
+  description.innerHTML = `
+    ${album.artist.name} <span class="">- ${realeaseYear[0]} - ${
     album.nb_tracks
-  } brani, 
-                ${Math.floor(album.duration / 60)} min ${
+  } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${
     album.duration % 60
-  } sec</p>
-            </div>
-        </div>`;
-  colBodyAlbumPage.innerHTML = headerAlbumPage;*/
+  } sec</span></span>
+    `;
+  //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
   const containerTracks = document.getElementById("container-tracks");
   album.tracks.data.forEach((track, i) => {
@@ -76,8 +52,8 @@ const albumHtml = function (album) {
             <p class="m-0">${i + 1}</p>
         </div>
         <div class="col-6 p-0">
-            <h5 class="m-0">${track.title}</h5>
-            <p class="m-0 text-info">${track.artist.name}</p>
+            <h5 class="m-0 fw-bold">${track.title}</h5>
+            <p class="m-0 grey-light">${track.artist.name}</p>
         </div>
         <div class="col-4 p-0 d-flex align-items-center">
             <p class="m-0">123</p>
