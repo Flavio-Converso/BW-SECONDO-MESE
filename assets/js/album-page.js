@@ -1,5 +1,5 @@
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-const idAlbum = "513551092";
+const idAlbum = "335573467";
 const url = apiUrl + idAlbum;
 
 // funzione per recuperare i dati dell'album tramite il suo id
