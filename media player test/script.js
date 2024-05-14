@@ -1,29 +1,64 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Seleziona gli elementi HTML necessari
     const playPauseButton = document.querySelector(".play-pause");
     const progressBar = document.querySelector(".progress");
-    const progressContainer = document.querySelector(".progress-container");
+    const progressReference = document.querySelector(".progress-reference");
     const currentTime = document.querySelector(".current-time");
     const volumeBar = document.querySelector(".volume-bar .progress");
     const volumeIcon = document.querySelector(".volume-bar i");
+    const volumeReference = document.querySelector(".volume-reference");
     const randomButton = document.querySelector(".fa-random");
     const heartButton = document.querySelector(".far.fa-heart");
     const rewindButton = document.querySelector(".fa-undo-alt");
     const audioElement = document.querySelector("audio");
 
+    // Variabili di stato per il player audio
     let isPlaying = false;
     let isMuted = false;
     let isLiked = false;
     let isRandom = false;
+    progressBar.style.width = "0%";
 
+    progressReference.addEventListener("click", setProgress);
+
+    // Funzione per gestire il click sulla progress bar
+    function setProgress(e) {
+        const progressReferenceWidth = progressReference.clientWidth;
+        const clickX = e.clientX - progressReference.getBoundingClientRect().left;
+        const relativeClickX = Math.min(1, Math.max(0, clickX / progressReferenceWidth));
+
+        // Aggiorna la posizione della progress bar
+        progressBar.style.width = `${relativeClickX * 100}%`;
+
+        // Aggiorna il tempo di riproduzione dell'audio
+        const duration = audioElement.duration;
+        audioElement.currentTime = duration * relativeClickX;
+    }
+    audioElement.addEventListener("timeupdate", updateProgressBar);
+
+    // Funzione per aggiornare la progress bar in base alla riproduzione dell'audio
+    function updateProgressBar() {
+        const currentTime = audioElement.currentTime;
+        const duration = audioElement.duration;
+        const progress = (currentTime / duration) * 100;
+
+        // Aggiorna la larghezza della progress bar
+        progressBar.style.width = `${progress}%`;
+
+        // Aggiorna il tempo corrente di riproduzione
+        currentTimeDisplay.textContent = formatTime(currentTime);
+    }
+
+    // Aggiungi gli eventi ai pulsanti e alle barre
     playPauseButton.addEventListener("click", togglePlayPause);
     volumeIcon.addEventListener("click", toggleMute);
     randomButton.addEventListener("click", toggleRandom);
     heartButton.addEventListener("click", toggleHeart);
     rewindButton.addEventListener("click", rewind);
-
     progressBar.addEventListener("click", setProgress);
     volumeBar.addEventListener("click", setVolume);
-    //logica per il play e pause
+
+    // Funzione per gestire il play e il pausa
     function togglePlayPause() {
         isPlaying = !isPlaying;
         if (isPlaying) {
@@ -36,20 +71,33 @@ document.addEventListener("DOMContentLoaded", function () {
             playPauseButton.classList.add("fa-play");
         }
     }
-    //logia per il muto
+
+    // Funzione per gestire il mute
     function toggleMute() {
         isMuted = !isMuted;
         if (isMuted) {
+            // Memorizza temporaneamente il volume prima di impostarlo a zero
+            localStorage.setItem("previousVolume", audioElement.volume);
+
             audioElement.volume = 0;
             volumeIcon.classList.remove("fa-volume-down");
             volumeIcon.classList.add("fa-volume-mute", "active");
+            volumeBar.style.width = "0%"; // Imposta la barra del volume a zero
         } else {
-            audioElement.volume = 1;
+            // Ripristina il volume al valore memorizzato
+            const previousVolume = localStorage.getItem("previousVolume");
+            audioElement.volume = previousVolume ? parseFloat(previousVolume) : 1;
+
             volumeIcon.classList.remove("fa-volume-mute", "active");
             volumeIcon.classList.add("fa-volume-down");
+
+            // Aggiorna la larghezza della barra del volume
+            volumeBar.style.width = `${audioElement.volume * 100}%`;
         }
     }
-    //logica random da implementare
+
+
+    // Funzione per gestire la riproduzione casuale
     function toggleRandom() {
         isRandom = !isRandom;
         if (isRandom) {
@@ -60,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Logica per riproduzione normale
         }
     }
-    //logica like da implementare ( se la vogliamo implementare)
+
+    // Funzione per gestire il like
     function toggleHeart() {
         isLiked = !isLiked;
         if (isLiked) {
@@ -74,30 +123,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Funzione per riavvolgere (da implementare)
     function rewind() {
         // Logica per riavvolgere (se vogliamo implementarla)
     }
-    //logica progressBar da fixare (prende come reference la barra verde, ci ho sbattuto la testa per un'oretta ma non riesco a venirne a capo)
-    function setProgress(e) {
-        const progressBarWidth = progressBar.clientWidth;
-        const clickX = e.clientX - progressBar.getBoundingClientRect().left;
-        const relativeClickX = Math.min(1, Math.max(0, clickX / progressBarWidth));
-        const duration = audioElement.duration;
-        const currentTimeValue = relativeClickX * duration;
 
-        currentTime.textContent = formatTime(currentTimeValue);
-        progressBar.style.width = `${relativeClickX * 100}%`;
-        audioElement.currentTime = currentTimeValue;
-    }
-    //logica volume, da fixare come la progressBar
+
+    volumeReference.addEventListener("click", setVolume);
+
+    // Funzione per impostare il volume
     function setVolume(e) {
-        const volumeBarWidth = volumeBar.clientWidth;
-        const clickX = e.clientX - volumeBar.getBoundingClientRect().left;
-        const relativeClickX = Math.min(1, Math.max(0, clickX / volumeBarWidth));
-        const newVolume = relativeClickX;
+        const volumeReferenceWidth = volumeReference.clientWidth;
+        const clickX = e.clientX - volumeReference.getBoundingClientRect().left;
+        const relativeClickX = Math.min(1, Math.max(0, clickX / volumeReferenceWidth));
 
-        audioElement.volume = newVolume;
-        volumeBar.style.width = `${newVolume * 100}%`;
+        // Aggiorna la posizione della barra del volume
+        volumeBar.style.width = `${relativeClickX * 100}%`;
+
+        // Aggiorna il volume dell'audio
+        audioElement.volume = relativeClickX;
     }
 
     // Aggiorna il tempo corrente e totale ogni secondo
@@ -114,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         totalTimeDisplay.textContent = formattedTotalTime;
     }
 
+    // Funzione per formattare il tempo in mm:ss
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
         seconds = Math.floor(seconds % 60);

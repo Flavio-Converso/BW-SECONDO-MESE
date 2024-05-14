@@ -119,6 +119,7 @@ i:hover{
     gap: 1em;
 }
 .progress-bar{
+    position: relative;
     height: 4px;
     border-radius: 10px;
     width: 30%;
@@ -129,7 +130,16 @@ i:hover{
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    background-color: var(--secondary-color);
+    background-color: #b3b3b3;
+}
+
+.progress-reference {
+    position: absolute; /* Posizionamento assoluto rispetto al contenitore .progress-bar */
+    top: 0; /* Posiziona il div di riferimento all'inizio della barra di avanzamento */
+    left: 0; /* Posiziona il div di riferimento all'inizio della barra di avanzamento */
+    width: 100%; /* Stessa larghezza della barra di avanzamento */
+    height: 100%; /* Stessa altezza della barra di avanzamento */
+    /* Altri stili... */
 }
 .progress-bar:hover .progress{
     background-color: green;
@@ -168,7 +178,29 @@ i:hover{
 .volume-bar .progress-bar:hover .progress::after{
     --size: .8em;
 }
+.volume-reference{
+    position: absolute; /* Posizionamento assoluto rispetto al contenitore .progress-bar */
+    top: 0; /* Posiziona il div di riferimento all'inizio della barra di avanzamento */
+    left: 0; /* Posiziona il div di riferimento all'inizio della barra di avanzamento */
+    width: 100%; /* Stessa larghezza della barra di avanzamento */
+    height: 100%; /* Stessa altezza della barra di avanzamento */
+    /* Altri stili... */
+}
 /* Stile per le icone attive */
 .active {
     color: green; /* Cambia il colore delle icone in verde */
+}
+
+
+@media screen  and (max-width: 768px) {
+    .other-features{
+        display: none;
+    }
+    .song-infos img{
+        display: none;
+    }
+    #randomBtn, #backwardBtn,#forwardBtn,#undoBtn{
+        display: none;
+    }
+
 }
