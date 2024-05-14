@@ -69,6 +69,9 @@ i:hover {
     height: 100%;
     object-fit: cover;
     cursor: pointer;
+    box-shadow: .2vh .1vh 2vh black;
+    bottom:1.5vh;
+    z-index: 2000;
 }
 
 .song-description p {
@@ -211,26 +214,7 @@ i:hover {
 .active {
     color: green;
 }
-@media screen and (max-width: 375px) {
-    #heartBtn{
-        position: absolute;
-        left: 1vh;
-        top: .5vh;
-        display: none;
-    }
-    #playPauseBtn {
-        position: absolute;
-        right: 20vh;
-        top: 1vh;
-    }
-}
-@media screen and (max-width: 414px) {
-    #playPauseBtn {
-        position: absolute;
-        right: 17vh;
-        top: 1vh;
-    }
-}
+
 @media screen and (max-width: 767px) {
     .music-player {
         margin-bottom: 2vh;
@@ -246,7 +230,11 @@ i:hover {
     }
 
     .song-infos img {
-        visibility: hidden;
+        position: relative;
+        left:0vh;
+        box-shadow: .2vh .1vh 2vh black;
+        bottom:1.5vh;
+        z-index: 2000;
     }
 
     .progress-container {
@@ -264,23 +252,28 @@ i:hover {
     }
 
     .song-description {
-        margin-bottom: 6vh;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         text-overflow: ellipsis; /* Aggiunto */
-        animation: scroll 10s linear infinite;
+        animation: scroll 20s linear infinite;
         white-space: nowrap;
+    }
+    #desc_div{
+        width: 50vw;
+        position: relative;
+        right: 1.5vh;
+        bottom: 2vh;
     }
 
 
     @keyframes scroll {
         0% {
-            transform: translateX(10%);
+            transform: translateX(100%);
         }
         100% {
-            transform: translateX(-160%);
+            transform: translateX(-185%);
         }
     }
 
@@ -306,21 +299,11 @@ i:hover {
         display: none;
     }
 
-    .song-infos img {
-        visibility: hidden;
-    }
 
     .progress-container {
         width: 320%; /* Modificato */
         position: relative;
         top: 3.5vh;
-    }
-
-
-    #playPauseBtn {
-        position: absolute;
-        right: 4vh;
-        top: 1vh;
     }
 
     .current-time,
