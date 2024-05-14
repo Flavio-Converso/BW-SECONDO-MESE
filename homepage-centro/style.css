@@ -1,16 +1,91 @@
-.bg-green-spotify {
-    background-color: #16e05d;
-}
-
 .green-spotify {
     color: #16e05d;
 }
 
-.personal-img {
+.grey-bg {
+    background-color: rgb(29, 29, 29)
+}
+
+.grey-bg2 {
+    background-color: rgb(41, 41, 41)
+}
+
+.grey-bg3 {
+    background-color: rgb(20, 20, 20)
+}
+
+.grey-bg2:hover {
+    background-color: rgb(51, 51, 51)
+}
+
+.grey-text2 {
+    color: rgb(102, 102, 102)
+}
+
+.gradient-main-card {
+    background: linear-gradient(184deg, rgba(35, 35, 35, 1) 0%, rgba(25, 25, 25, 1) 33%, rgba(16, 16, 16, 1) 58%, rgba(0, 0, 0, 1) 100%);
+}
+
+#imgUtente {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.freccette {
+    width: 40px;
+    padding-right: 10px;
+    filter: brightness(90%);
+    opacity: 0.9;
+}
+
+.freccette:hover {
+    filter: brightness(100%);
+    opacity: 1;
+}
+
+#dottedMenu {
+    width: 30px;
+    filter: brightness(80%);
+    opacity: 0.8;
+}
+
+#dottedMenu:hover {
+    filter: brightness(100%);
+    opacity: 1;
+}
+
+#playButtonMain {
+    border: none;
+    background-color: #16e05d;
+}
+
+#playButtonMain:hover {
+    background-color: #05a53d;
+}
+
+.personal-imG {
     min-width: 90px;
     width: 100%;
     height: 100%;
+}
 
+.grey-horizontal-card {
+    background-color: rgb(44, 44, 44);
+    transition: background-color 0.3s ease;
+}
+
+.grey-horizontal-card:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+.grey-vertical-card {
+    background-color: rgb(29, 29, 29);
+    transition: background-color 0.3s ease;
+}
+
+.grey-vertical-card:hover {
+    background-color: rgb(20, 20, 20)
 }
 
 .play-badge {
@@ -23,15 +98,45 @@
     border-radius: 50%;
     display: flex;
     opacity: 0;
-    transition: opacity 0.2s;
+    transform: scale(1);
+    transition: opacity 0.2s, transform 0.2s;
 }
 
 .card:hover .play-badge {
     opacity: 1;
 }
 
+.play-badge2 {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #16e05d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.card:hover .play-badge2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.play-badge2:hover {
+    transform: translateY(0);
+}
+
 .playButton {
     width: 50px;
     position: relative;
     left: 2px;
+}
+
+.playButton:hover {
+    transform: scale(1.1);
 }
