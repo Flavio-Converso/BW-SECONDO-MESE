@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const playPauseButton = document.querySelector(".play-pause");
     const progressBar = document.querySelector(".progress");
     const progressReference = document.querySelector(".progress-reference");
-    const currentTime = document.querySelector(".current-time");
+    const currentTimeDisplay = document.querySelector(".current-time");
     const volumeBar = document.querySelector(".volume-bar .progress");
     const volumeIcon = document.querySelector(".volume-bar i");
     const volumeReference = document.querySelector(".volume-reference");
     const randomButton = document.querySelector(".fa-random");
     const heartButton = document.querySelector(".far.fa-heart");
-    const rewindButton = document.querySelector(".fa-undo-alt");
+    const rewindButton = document.querySelector("#rewindBtn");
     const audioElement = document.querySelector("audio");
 
     // Variabili di stato per il player audio
@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let isLiked = false;
     let isRandom = false;
     progressBar.style.width = "0%";
-
-    progressReference.addEventListener("click", setProgress);
 
     // Funzione per gestire il click sulla progress bar
     function setProgress(e) {
@@ -34,6 +32,34 @@ document.addEventListener("DOMContentLoaded", function () {
         const duration = audioElement.duration;
         audioElement.currentTime = duration * relativeClickX;
     }
+
+    // Aggiungi un listener per l'evento mousedown sulla barra di riferimento
+    progressReference.addEventListener("mousedown", startDrag);
+
+    // Funzione per aggiornare la posizione della progress bar durante il trascinamento
+    function updateProgressBarDuringDrag(e) {
+        if (isDragging) {
+            setProgress(e);
+        }
+    }
+
+    // Definisce una funzione per gestire l'inizio del trascinamento
+    function startDrag(e) {
+        isDragging = true;
+        updateProgressBarDuringDrag(e);
+        // Aggiungi listener per mousemove e mouseup sul documento
+        document.addEventListener("mousemove", updateProgressBarDuringDrag);
+        document.addEventListener("mouseup", stopDrag);
+    }
+
+    // Definisce una funzione per gestire la fine del trascinamento
+    function stopDrag() {
+        isDragging = false;
+        // Rimuovi i listener per mousemove e mouseup sul documento
+        document.removeEventListener("mousemove", updateProgressBarDuringDrag);
+        document.removeEventListener("mouseup", stopDrag);
+    }
+
     audioElement.addEventListener("timeupdate", updateProgressBar);
 
     // Funzione per aggiornare la progress bar in base alla riproduzione dell'audio
@@ -55,8 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     randomButton.addEventListener("click", toggleRandom);
     heartButton.addEventListener("click", toggleHeart);
     rewindButton.addEventListener("click", rewind);
-    progressBar.addEventListener("click", setProgress);
-    volumeBar.addEventListener("click", setVolume);
+    volumeReference.addEventListener("click", setVolume);
 
     // Funzione per gestire il play e il pausa
     function togglePlayPause() {
@@ -96,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
     // Funzione per gestire la riproduzione casuale
     function toggleRandom() {
         isRandom = !isRandom;
@@ -123,13 +147,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Funzione per riavvolgere (da implementare)
+    // Funzione per riprodurre (da implementare)
     function rewind() {
-        // Logica per riavvolgere (se vogliamo implementarla)
+        // Logica per riprodurre (se vogliamo implementarla)
+        isRandom = !isRandom;
+        if (isRandom) {
+            rewindButton.classList.add("active");
+            // Logica per riproduzione casuale
+        } else {
+            rewindButton.classList.remove("active");
+            // Logica per riproduzione normale
+        }
     }
-
-
-    volumeReference.addEventListener("click", setVolume);
 
     // Funzione per impostare il volume
     function setVolume(e) {
@@ -164,4 +193,48 @@ document.addEventListener("DOMContentLoaded", function () {
         seconds = Math.floor(seconds % 60);
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
+
+    // Definisci una funzione per rimuovere l'elemento 'divider' quando la larghezza supera i 768px
+    function removeDividerOnResize() {
+        if (window.innerWidth >= 768) {
+            var elementsToRemove = document.getElementsByClassName('divider');
+            for (var i = 0; i < elementsToRemove.length; i++) {
+                var element = elementsToRemove[i];
+                if (element && element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            }
+        }
+    }
+
+
+    // Esegui la funzione all'avvio e ogni volta che la finestra viene ridimensionata
+    removeDividerOnResize(); // Esegui subito al caricamento della pagina
+    window.addEventListener('resize', removeDividerOnResize); // Esegui ogni volta che la finestra viene ridimensionata
+
+    // Definisci una funzione per gestire l'inizio del trascinamento
+    function startDrag(e) {
+        isDragging = true;
+        updateProgressBarDuringDrag(e);
+        // Aggiungi listener per mousemove e mouseup sul documento
+        document.addEventListener("mousemove", updateProgressBarDuringDrag);
+        document.addEventListener("mouseup", stopDrag);
+    }
+
+    // Funzione per aggiornare la posizione della progress bar durante il trascinamento
+    function updateProgressBarDuringDrag(e) {
+        if (isDragging) {
+            const progressReferenceWidth = progressReference.clientWidth;
+            const clickX = e.clientX - progressReference.getBoundingClientRect().left;
+            const relativeClickX = Math.min(1, Math.max(0, clickX / progressReferenceWidth));
+
+            // Aggiorna la posizione della progress bar
+            progressBar.style.width = `${relativeClickX * 100}%`;
+
+            // Aggiorna il tempo di riproduzione dell'audio
+            const duration = audioElement.duration;
+            audioElement.currentTime = duration * relativeClickX;
+        }
+    }
+
 });
