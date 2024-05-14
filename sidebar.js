@@ -1,3 +1,27 @@
+//`
+//<a href="#" class="text-decoration-none">
+//    <div class="card mb-3 grey-horizontal-card position-relative">
+//        <div class="row g-0">
+//            <div class="col">
+//                <img src="" class="personal-imG rounded-start"
+//                    alt="immagine album" />
+//            </div>
+//            <div class="col d-flex align-items-center">
+//                <div class="card-body">
+//                    <h5 id="titoloHorizontalCard"
+//                        class="card-title d-flex justify-content-center text-white">
+//                    </h5>
+//                </div>
+//            </div>
+//        </div>
+//        <div class="play-badge">
+//            <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
+//                alt="play button" />
+//        </div>
+//    </div>
+//</a>
+//</div>`;
+//
 // Funzione che stora il contenuto in LocalStorage
 function store(dati) {
   const albums = [];
@@ -19,7 +43,7 @@ function store(dati) {
 
 // Funzione che fa la ricerca con la fetch
 
-function search(searchInput) {
+function search(searchInput, callback) {
   fetch(
     "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + searchInput
   )
@@ -33,6 +57,7 @@ function search(searchInput) {
     .then((searchResult) => {
       console.log(searchResult);
       store(searchResult);
+      callback(); // Call the callback function to reload the page
     })
     .catch((err) => {
       console.log("ERRORE", err);
@@ -44,29 +69,59 @@ document.getElementById("search").addEventListener("keydown", function (event) {
   // Verifica se il tasto premuto è Enter
   if (event.key === "Enter") {
     console.log(this.value);
-    search(this.value);
+    search(this.value, () => window.location.reload());
   }
 });
 
 let titoloAlbum = document.getElementById("titoloAlbum");
 let artistaAlbum = document.getElementsByClassName("artistaAlbum");
 let fotoAlbum = document.getElementById("fotoAlbum");
-
 document.addEventListener("DOMContentLoaded", function () {
   const storedData = localStorage.getItem("searchResult");
 
   const albums = JSON.parse(storedData);
-  if (albums.length > 0) {
+  if (albums && albums.length > 0) {
     const firstAlbum = albums[0];
     let titoloAlbum = document.getElementById("titoloAlbum");
-    document.getElementsByClassName("artistaAlbum")[0].textContent =
-      firstAlbum.artistName;
-    document.getElementsByClassName("artistaAlbum")[1].textContent =
-      firstAlbum.artistName;
+    let artistaAlbums = document.getElementsByClassName("artistaAlbum");
     let fotoAlbum = document.getElementById("fotoAlbum");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
-    artistaAlbum.textContent = firstAlbum.artistName;
+    Array.from(artistaAlbums).forEach(
+      (artista) => (artista.textContent = firstAlbum.artistName)
+    );
     fotoAlbum.src = firstAlbum.albumCover;
+
+    // Create cards for each album
+    for (let i = 1; i < albums.length; i++) {
+      // start from 1 since first album is shown elsewhere
+      let card = document.createElement("div");
+      card.classList.add("col-12", "col-sm-6", "col-lg-4");
+      card.innerHTML = `
+          <a href="#" class="text-decoration-none">
+              <div class="card mb-3 grey-horizontal-card position-relative">
+                  <div class="row g-0">
+                      <div class="col">
+                          <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
+                              alt="immagine album" />
+                      </div>
+                      <div class="col d-flex align-items-center">
+                          <div class="card-body">
+                              <h5 id="titoloHorizontalCard"
+                                  class="card-title d-flex justify-content-center text-white">
+                                  ${albums[i].albumTitle}
+                              </h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="play-badge">
+                      <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
+                          alt="play button" />
+                  </div>
+              </div>
+          </a>
+          </div>`;
+      document.getElementById("printHorizontalCards").appendChild(card);
+    }
   }
 });
