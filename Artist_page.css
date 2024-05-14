@@ -1,0 +1,23 @@
+
+header{
+  position :relative
+}
+
+  .verified{
+    color: aqua !important;
+  }
+
+#artistaHeader{   
+  position: absolute !important;
+  bottom: 1em !important;
+  left: 1em !important;
+}
+
+#artistaHeader p{
+  width: 106%;
+}
+
+main{background-color: black;
+      color: white;}
+
+.immaginetta {width: 5em;}
