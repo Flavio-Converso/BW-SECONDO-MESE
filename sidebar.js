@@ -92,15 +92,25 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     fotoAlbum.src = firstAlbum.albumCover;
   }
+  //escludere elementi ripetuti nell'array
+  for (let i = 0; i < albums.length; i++) {
+    for (let n = i + 1; n < albums.length; n++) {
+      if (albums[i].albumTitle === albums[n].albumTitle) {
+        albums.splice(n, 1);
+        n--;
+      }
+    }
+  }
+  console.log(albums);
 
   for (let i = 1; i < albums.length; i++) {
     let card = document.createElement("div");
-    card.classList.add("col-12", "col-sm-6", "col-lg-4");
+    card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
     card.innerHTML = `
               <a href="#" class="text-decoration-none">
-                  <div class="card mb-3 grey-horizontal-card position-relative">
-                      <div class="row g-0">
-                          <div class="col">
+                  <div class="card mb-3 grey-horizontal-card position-relative ">
+                      <div class="row ">
+                          <div class="col d-flex align-items-center">
                               <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
                                   alt="immagine album" />
                           </div>
