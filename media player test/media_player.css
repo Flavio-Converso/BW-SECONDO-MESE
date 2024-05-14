@@ -18,12 +18,11 @@ body {
     --green-color: #2d5;
     --padding: 1em;
     background-color: #111;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
     background-color: #333;
     padding: 20px;
@@ -217,6 +216,7 @@ i:hover {
         position: absolute;
         left: 1vh;
         top: .5vh;
+        display: none;
     }
     #playPauseBtn {
         position: absolute;
@@ -225,11 +225,6 @@ i:hover {
     }
 }
 @media screen and (max-width: 414px) {
-    #heartBtn{
-        position: absolute;
-        left: 1vh;
-        top: .5vh;
-    }
     #playPauseBtn {
         position: absolute;
         right: 17vh;
@@ -241,7 +236,9 @@ i:hover {
         margin-bottom: 2vh;
         border-radius: 2.8vh;
         width: 90%;
-        position: relative; /* Aggiunto */
+        position: fixed; /* Aggiunto */
+        bottom: 5.6vh;
+        left:2vh
     }
 
     .other-features {
@@ -261,35 +258,29 @@ i:hover {
     #randomBtn,
     #backwardBtn,
     #forwardBtn,
-    #rewindBtn {
+    #rewindBtn,
+    #heartBtn {
         display: none;
     }
 
     .song-description {
-        padding: 0vh;
+        margin-bottom: 6vh;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         text-overflow: ellipsis; /* Aggiunto */
-    }
-
-    .song-description {
-        animation: scroll 12s linear infinite;
+        animation: scroll 10s linear infinite;
         white-space: nowrap;
     }
 
-    .fa-heart {
-        position: absolute;
-        top:2vh;
-    }
 
     @keyframes scroll {
         0% {
             transform: translateX(10%);
         }
         100% {
-            transform: translateX(-70%);
+            transform: translateX(-160%);
         }
     }
 
@@ -309,7 +300,6 @@ i:hover {
         margin-bottom: 2vh;
         border-radius: 3vh;
         width: 90%;
-        position: relative; /* Aggiunto */
     }
 
     .other-features {
@@ -326,36 +316,6 @@ i:hover {
         top: 3.5vh;
     }
 
-    #randomBtn,
-    #backwardBtn,
-    #forwardBtn,
-    #rewindBtn {
-        display: none;
-    }
-
-    .song-description {
-        padding: 0vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        text-overflow: ellipsis; /* Aggiunto */
-    }
-
-    .song-description {
-        animation: scroll 12s linear infinite;
-        white-space: nowrap;
-    }
-
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(10%);
-        }
-        100% {
-            transform: translateX(-70%);
-        }
-    }
 
     #playPauseBtn {
         position: absolute;
@@ -366,11 +326,6 @@ i:hover {
     .current-time,
     .total-time {
         display: none;
-    }
-    #heartBtn{
-        position: absolute;
-        right: 15vh;
-        top: 1vh;
     }
 }
 
