@@ -25,17 +25,38 @@ const getAlbumWithId = function () {
 const albumHtml = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
   const realeaseYear = album.release_date.split("-");
+  const imgAlbum = document.querySelector("#header-album-page > img");
+  imgAlbum.setAttribute("src", album.cover_big);
+  const title = document.querySelector("#header-album-page #title");
+  title.innerHTML = album.title;
+  const imgArtist = document.querySelector("#description > img");
+  imgArtist.setAttribute("src", album.artist.picture);
+  const description = document.querySelector("#description > p");
+  description.innerHTML =
+    album.artist.name +
+    " - " +
+    realeaseYear[0] +
+    " - " +
+    album.nb_tracks +
+    " brani, " +
+    Math.floor(album.duration / 60) +
+    " min " +
+    (album.duration % 60) +
+    " sec";
   // da sistemare meglio
+  /*
   const headerAlbumPage = `
-        <img class="w-25" src="${album.cover_big}" alt="Foto album"/>
+        <img class="w-25 h-25 d-flex align-items-center" src="${
+          album.cover_big
+        }" alt="Foto album"/>
         <div class="d-flex flex-column justify-content-end ms-2">
             <h6>ALBUM</h6>
-            <h1>${album.title}</h1>
+            <h1 class="display-6">${album.title}</h1>
             <div class="d-flex gap-2">
                 <img id="foto-artista" src="${
                   album.artist.picture_small
                 }" alt="" />
-                <p>${album.artist.name} - ${realeaseYear[0]} - ${
+                <p class="m-0">${album.artist.name} - ${realeaseYear[0]} - ${
     album.nb_tracks
   } brani, 
                 ${Math.floor(album.duration / 60)} min ${
@@ -43,7 +64,7 @@ const albumHtml = function (album) {
   } sec</p>
             </div>
         </div>`;
-  colBodyAlbumPage.innerHTML = headerAlbumPage;
+  colBodyAlbumPage.innerHTML = headerAlbumPage;*/
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
   const containerTracks = document.getElementById("container-tracks");
   album.tracks.data.forEach((track, i) => {

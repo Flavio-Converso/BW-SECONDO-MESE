@@ -1,5 +1,23 @@
 #foto-artista {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+}
+#title {
+  font-size: 2em;
+  font-weight: bold;
+}
+#description > p {
+  font-size: 0.7em;
+}
+#header-album-page {
+  background-color: #d0b34b;
+}
+#rows-tracks-list {
+  background: rgb(208, 179, 75);
+  background: linear-gradient(
+    180deg,
+    rgba(208, 179, 75, 1) 0%,
+    rgba(0, 0, 0, 1) 23%
+  );
 }
