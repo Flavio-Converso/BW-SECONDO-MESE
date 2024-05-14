@@ -1,11 +1,18 @@
+html {
+  height: 100vh;
+  width: 100%;
+}
+
 /* Imposta il main al 90% per lasciare spazio per il player */
 main {
-  height: 90%;
+  height: 100%;
   background-color: rgb(57, 55, 55);
+  padding: 0;
 }
 
 /* Contenitore flessibile con altezza al 100% */
 .container-flex {
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,19 +21,31 @@ main {
 /* Imposta altezza delle righe al 100% */
 .row {
   height: 100%;
+  width: 100vw;
 }
 
 /* Colonna sx */
 .side-bar {
+  position: fixed;
   background-color: black;
   height: 100%;
   color: white;
 }
 /* Colonna dx */
 .column-dx {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
   color: white;
   background-color: black;
 }
+
+.central {
+  margin-left: 24.3%;
+  margin-right: 20%;
+}
+
 .botton {
   border: none; /* Rimuove il bordo */
   background: none; /* Rimuove lo sfondo */
@@ -36,7 +55,6 @@ main {
   cursor: pointer; /* Mostra il cursore come puntatore */
   outline: none; /* Rimuove l'outline al focus */
 }
-<<<<<<< HEAD
 
 /* Quando si va sotto i 992px scompare la colonna dx e i caratteri diventano più piccoli */
 @media screen and (max-width: 992px) {
@@ -53,9 +71,8 @@ main {
 }
 
 @media screen and (min-width: 576px) {
-  html,
   body {
-    height: 100vh;
+    height: 100%;
   }
   .menu2 {
     display: none;
@@ -63,6 +80,9 @@ main {
 }
 /* Sotto i 576px le icone diventa più grandi e spaziate tra loro */
 @media screen and (max-width: 576px) {
+  .side-bar {
+    position: relative;
+  }
   .icon {
     font-size: 30px;
   }
@@ -70,5 +90,13 @@ main {
     justify-content: space-evenly;
   }
 }
-=======
->>>>>>> main
+/*
+.player {
+  max-width: 100%;
+  padding: 0;
+  height: 70px;
+  background-color: aqua;
+  position: absolute;
+  top: 91.43%;
+}
+*/

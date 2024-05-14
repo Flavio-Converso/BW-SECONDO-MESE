@@ -31,22 +31,25 @@ body {
     height: 7rem;
     color: var(--primary-color);
 }
-i{
-    color: var(--secondary-color);
+
+i {
+    color: #acacac;
 }
-i:hover{
-    color: var(--primary-color);
+
+i:hover {
+    color: #dadada;
 }
+
 .song-bar {
     position: absolute;
     left: var(--padding);
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 1.5rem;
     width: 100%;
+    padding: 0 var(--padding);
 }
 
 .song-infos {
@@ -54,39 +57,46 @@ i:hover{
     align-items: center;
     gap: 1em;
 }
+
 .image-container {
     --size: 4.5em;
     flex-shrink: 0;
-    width: var(--size);
-    height: var(--size);
+    width: 6vh;
+    height: 6vh;
 }
+
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
+
 .song-description p {
     margin: 0.2em;
 }
+
 .title,
 .artist {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
     overflow: hidden;
 }
+
 .title:hover,
 .artist:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
-.artist{
+
+.artist {
     color: var(--secondary-color);
 }
-.icons{
+
+.icons {
     display: flex;
     gap: 1em;
 }
-.progress-controller{
+
+.progress-controller {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -95,46 +105,65 @@ i:hover{
     gap: 1.5em;
     color: var(--secondary-color);
 }
-.control-buttons{
+
+.control-buttons {
     display: flex;
     align-items: center;
     gap: 2em;
+    z-index: 1;
 }
-.play-pause{
+
+.play-pause {
     display: inline-block;
     padding: 1em;
     background-color: var(--primary-color);
     color: #111;
     border-radius: 50%;
 }
-.play-pause:hover{
+#playPauseBtn{
+    z-index: 1;
+}
+.play-pause:hover {
     transform: scale(1.1);
     color: #111;
 }
-.progress-container{
+
+.progress-container {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1em;
 }
-.progress-bar{
+
+.progress-bar {
+    position: relative;
     height: 4px;
     border-radius: 10px;
     width: 30%;
     background-color: #ccc4;
 }
-.progress{
+
+.progress {
     position: relative;
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    background-color: var(--secondary-color);
+    background-color: #b3b3b3;
 }
-.progress-bar:hover .progress{
+
+.progress-reference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-bar:hover .progress {
     background-color: green;
 }
-.progress-bar:hover .progress::after{
+
+.progress-bar:hover .progress::after {
     content: "";
     position: absolute;
     --size: 1em;
@@ -147,28 +176,201 @@ i:hover{
 }
 
 .progress-bar {
-    display: inline-block; /* Rende la barra di progresso orizzontale */
+    display: inline-block;
 }
 
-.other-features{
+.other-features {
     position: absolute;
     right: var(--padding);
     display: flex;
     flex-direction: row;
     gap: 1em;
 }
-.volume-bar{
+
+.volume-bar {
     display: flex;
     align-items: center;
     gap: .7em;
 }
-.volume-bar .progress-bar{
+
+.volume-bar .progress-bar {
     width: 6em;
 }
-.volume-bar .progress-bar:hover .progress::after{
+
+.volume-bar .progress-bar:hover .progress::after {
     --size: .8em;
 }
-/* Stile per le icone attive */
-.active {
-    color: green; /* Cambia il colore delle icone in verde */
+
+.volume-reference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
+
+.active {
+    color: green;
+}
+@media screen and (max-width: 375px) {
+    #heartBtn{
+        position: absolute;
+        left: 1vh;
+        top: .5vh;
+    }
+    #playPauseBtn {
+        position: absolute;
+        right: 20vh;
+        top: 1vh;
+    }
+}
+@media screen and (max-width: 414px) {
+    #heartBtn{
+        position: absolute;
+        left: 1vh;
+        top: .5vh;
+    }
+    #playPauseBtn {
+        position: absolute;
+        right: 17vh;
+        top: 1vh;
+    }
+}
+@media screen and (max-width: 767px) {
+    .music-player {
+        margin-bottom: 2vh;
+        border-radius: 2.8vh;
+        width: 90%;
+        position: relative; /* Aggiunto */
+    }
+
+    .other-features {
+        display: none;
+    }
+
+    .song-infos img {
+        visibility: hidden;
+    }
+
+    .progress-container {
+        width: 320%; /* Modificato */
+        position: relative;
+        top: 3.5vh;
+    }
+
+    #randomBtn,
+    #backwardBtn,
+    #forwardBtn,
+    #rewindBtn {
+        display: none;
+    }
+
+    .song-description {
+        padding: 0vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Aggiunto */
+    }
+
+    .song-description {
+        animation: scroll 12s linear infinite;
+        white-space: nowrap;
+    }
+
+    .fa-heart {
+        position: absolute;
+        top:2vh;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(10%);
+        }
+        100% {
+            transform: translateX(-70%);
+        }
+    }
+
+    #playPauseBtn {
+        position: absolute;
+        right: 4vh;
+        top: 1vh;
+    }
+
+    .current-time,
+    .total-time {
+        display: none;
+    }
+}
+@media screen and (max-width: 576px) {
+    .music-player {
+        margin-bottom: 2vh;
+        border-radius: 3vh;
+        width: 90%;
+        position: relative; /* Aggiunto */
+    }
+
+    .other-features {
+        display: none;
+    }
+
+    .song-infos img {
+        visibility: hidden;
+    }
+
+    .progress-container {
+        width: 320%; /* Modificato */
+        position: relative;
+        top: 3.5vh;
+    }
+
+    #randomBtn,
+    #backwardBtn,
+    #forwardBtn,
+    #rewindBtn {
+        display: none;
+    }
+
+    .song-description {
+        padding: 0vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Aggiunto */
+    }
+
+    .song-description {
+        animation: scroll 12s linear infinite;
+        white-space: nowrap;
+    }
+
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(10%);
+        }
+        100% {
+            transform: translateX(-70%);
+        }
+    }
+
+    #playPauseBtn {
+        position: absolute;
+        right: 4vh;
+        top: 1vh;
+    }
+
+    .current-time,
+    .total-time {
+        display: none;
+    }
+    #heartBtn{
+        position: absolute;
+        right: 15vh;
+        top: 1vh;
+    }
+}
+
