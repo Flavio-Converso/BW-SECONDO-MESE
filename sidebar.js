@@ -1,10 +1,23 @@
-class Artists {
-  constructor(_albumTitle, _artistName, _coverUrl) {
-    this.albumTitle = _albumTitle;
-    this.artistName = _artistName;
-    this.coverUrl = _coverUrl;
-  }
+// Funzione che stora il contenuto in LocalStorage
+function store(dati) {
+  const albums = [];
+  dati.data.forEach((element) => {
+    const albumTitle = element.album.title;
+    const artistName = element.artist.name;
+    const albumCover = element.album.cover_medium;
+    const album = {
+      albumTitle: albumTitle,
+      artistName: artistName,
+      albumCover: albumCover,
+    };
+
+    albums.push(album);
+  });
+  console.log(albums);
+  localStorage.setItem("searchResult", JSON.stringify(albums));
 }
+
+// Funzione che fa la ricerca con la fetch
 
 function search(searchInput) {
   fetch(
@@ -18,12 +31,8 @@ function search(searchInput) {
       }
     })
     .then((searchResult) => {
-      console.log("dati salvati", searchResult);
-      const artist = new Artists();
-      artist.albumTitle = searchResult.album.title;
-      artist.artistName = searchResult.album.artist.name;
-      artist.coverUrl = searchResult.album.cover_medium;
-      console.log(artist);
+      console.log(searchResult);
+      store(searchResult);
     })
     .catch((err) => {
       console.log("ERRORE", err);
