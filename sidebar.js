@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
             />
             <div class="play-badge2">
               <img
-                class="playButton"
+                class="playButton2"
                 src="./assets/imgs/svg/three-dots.svg"
                 alt="play button"
               />

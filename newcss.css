@@ -363,6 +363,12 @@ input {
     left: 2px;
 }
 
+.playButton2 {
+    width: 50px;
+    position: relative;
+
+}
+
 .playButton:hover {
     transform: scale(1.1);
 }
