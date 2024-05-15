@@ -1,6 +1,10 @@
+const addressBarContent = new URLSearchParams(location.search);
+console.log(addressBarContent);
+const albumId = addressBarContent.get("id");
+console.log(albumId);
+
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-const idAlbum = "335573467";
-const url = apiUrl + idAlbum;
+const url = apiUrl + albumId;
 
 // funzione per recuperare i dati dell'album tramite il suo id
 const getAlbumWithId = function () {
@@ -14,7 +18,11 @@ const getAlbumWithId = function () {
     })
     .then((alb) => {
       console.log(alb);
-      albumHtml(alb);
+      if (albumId) {
+        albumHtml(alb);
+      } else {
+        console.log("nessun album trovato");
+      }
     })
     .catch((err) => {
       console.log("ERRORE", err);
@@ -26,7 +34,8 @@ const albumHtml = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
   const realeaseYear = album.release_date.split("-");
   const imgAlbum = document.querySelector("#header-album-page > img");
-  imgAlbum.setAttribute("src", album.cover_big);
+  const albumCoverBig = album.cover_big;
+  imgAlbum.setAttribute("src", albumCoverBig);
   const title = document.querySelector("#header-album-page #title");
   title.innerHTML = album.title;
   const imgArtist = document.querySelector("#description > img");
@@ -38,6 +47,8 @@ const albumHtml = function (album) {
     } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${album.duration % 60
     } sec</span></span>
     `;
+  //setColorFromImage(albumCoverBig, "bgDinamico");
+  setColorGradient(albumCoverBig, "bgDinamico");
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
   const containerTracks = document.getElementById("container-tracks");
@@ -65,3 +76,43 @@ const albumHtml = function (album) {
 };
 
 getAlbumWithId();
+
+function setColorGradient(albumCoverBig, bgDinamico) {
+  const element = document.getElementById(bgDinamico);
+
+  new Vibrant(albumCoverBig)
+    .getPalette()
+    .then((palette) => {
+      // Preparazione della stringa del gradiente
+      const gradientColors = [
+        palette.Vibrant.getHex(),
+        palette.DarkVibrant.getHex(),
+        palette.LightVibrant.getHex(),
+        palette.Muted.getHex(),
+      ].join(", ");
+
+      // Applica un gradiente lineare che include tutti i colori
+      element.style.backgroundImage = `linear-gradient(to top, ${gradientColors})`;
+    })
+    .catch((err) => {
+      console.error("Errore nell'estrazione dei colori: ", err);
+    });
+}
+//function setColorFromImage(albumCoverBig, bgDinamico) {
+//  const element = document.getElementById(bgDinamico);
+//
+//  new Vibrant(albumCoverBig)
+//    .getPalette()
+//    .then((palette) => {
+//      console.log(palette); // Questo loggherà tutti i colori disponibili
+//      const vibrantColor = palette.Vibrant.getHex(); // Colore vibrante principale
+//      const lightVibrantColor = palette.LightVibrant.getHex(); // Colore vibrante chiaro
+//      const darkVibrantColor = palette.DarkVibrant.getHex(); // Colore vibrante scuro
+//      // Applica il colore di tua scelta
+//      element.style.backgroundColor = lightVibrantColor; // Qui puoi cambiare quale colore usare
+//    })
+//    .catch((err) => {
+//      console.error("Errore nell'estrazione dei colori: ", err);
+//    });
+//}
+//

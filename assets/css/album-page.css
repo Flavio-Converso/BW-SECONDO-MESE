@@ -1,0 +1,49 @@
+#foto-artista {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#description>p {
+    font-size: 0.7em;
+}
+
+/*rimosso background statico header #bg-dinamico {}*/
+
+
+#header-album>img {
+    width: 100%;
+}
+
+#container-tracks {
+    background: rgba(0, 0, 0, 1) 23%
+}
+
+.grey-light {
+    color: rgb(146, 146, 146);
+}
+
+#play {
+    font-size: 2em;
+}
+
+#icon {
+    height: 60px;
+}
+
+@media screen and (min-width: 767px) {
+    #header-album-page>img {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    #header-album-page>img {
+        width: 30%;
+    }
+}

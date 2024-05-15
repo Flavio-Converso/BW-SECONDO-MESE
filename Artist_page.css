@@ -1,0 +1,44 @@
+
+header{
+  position :relative
+}
+
+  .verified{
+    color: aqua !important;
+  }
+
+#artistaHeader{   
+  position: absolute !important;
+  bottom: 1em !important;
+  left: 1em !important;
+}
+
+main{color: white;}
+
+.immaginetta {width: 5em;}
+
+#grad1 {
+  background-image: linear-gradient(	#535353, #121212);
+}
+
+.fotoProfilo{
+
+  max-width: 6em;
+  border-radius: 50%;
+}
+
+#dropDownArtista{
+  position: absolute;
+  top: 5px;
+  right: 1px;
+}
+
+#search{
+  position: absolute;
+  top: 5px;
+  left: 3px;
+}
+
+.arrow{width: 30px;}
+
+.size {font-size: 4rem !important;}
