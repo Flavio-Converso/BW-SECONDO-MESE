@@ -1,5 +1,3 @@
-/*************** CSS DI ANDREA *****************/
-
 html {
     height: 100vh;
     width: 100%;
@@ -83,50 +81,10 @@ main {
     /* Rimuove l'outline al focus */
 }
 
-.menu2 a {
-    text-decoration: none;
-    color: white;
-}
-
-#cerca {
-    text-decoration: none;
-    color: white;
-}
-
-.search-icon {
-    cursor: pointer;
-}
-
-.menu1 a {
-    text-decoration: none;
-}
-
-.icon-spacing {
-    margin-right: 17px;
-    color: white;
-}
-
-.search-input {
-    display: none;
-    padding: 0;
-    /*  border: 1px solid #5c5959;*/
-    border-radius: 15px;
-    transition: opacity 0.3s ease, width 0.3s ease;
-    width: 0;
-    opacity: 0;
-}
-
-.search-container.active .search-input {
-    display: inline-block;
-    width: 15vw;
-    opacity: 1;
-}
-
 /* Quando si va sotto i 992px scompare la colonna dx e i caratteri diventano più piccoli */
 @media screen and (max-width: 992px) {
     .column-dx {
         display: none;
-        text-decoration: none;
     }
 
     .menu1,
@@ -178,29 +136,7 @@ main {
     .playlist {
         display: none;
     }
-
-    #cerca {
-        display: none;
-    }
-
-    #library {
-        height: 30px;
-    }
-
-    #search {
-        margin-bottom: 19px;
-    }
 }
-
-input {
-    background-color: rgb(20, 19, 19);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    max-width: 95%;
-}
-
-/*************   CSS DI FLAVIO *************/
 
 .green-spotify {
     color: #16e05d;
@@ -227,11 +163,11 @@ input {
 }
 
 .small-text {
-    font-size: 13px;
+    font-size: 13px
 }
 
 .small-text2 {
-    font-size: 15px;
+    font-size: 15px
 }
 
 .gradient-main-card {
@@ -357,15 +293,24 @@ input {
     transform: scale(1.1);
 }
 
+input {
+    background-color: rgb(20, 19, 19);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    max-width: 95%;
+}
+
 /*
-         <button class="btn p-0 text-light bi bi-search icon"></button>
-                  <a
-                    href="#"
-                    class="text-decoration-none text-light d-none d-sm-block"
-                    >Cerca</a
-                  >
-  
-  */
+       <button class="btn p-0 text-light bi bi-search icon"></button>
+                <a
+                  href="#"
+                  class="text-decoration-none text-light d-none d-sm-block"
+                  >Cerca</a
+                >
+
+*/
+
 
 /*PAGINA ALBUM*/
 #foto-artistA {
@@ -385,9 +330,12 @@ input {
 
 /*rimosso background statico header #bg-dinamico {}*/
 
+
 #header-album>img {
     width: 100%;
 }
+
+
 
 .grey-light {
     color: rgb(146, 146, 146);
