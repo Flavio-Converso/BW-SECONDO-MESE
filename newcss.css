@@ -393,6 +393,10 @@ input {
     font-size: 0.7em;
 }
 
+#dropdownUtente {
+    background-color: black !important;
+}
+
 #dropdownUtente:hover {
     background-color: black !important;
 }
