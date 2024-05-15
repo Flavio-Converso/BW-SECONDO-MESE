@@ -201,24 +201,15 @@ function toggleSearchInput() {
 //
 //
 //
-function setColorFromImage(albumCover, provasfondo) {
-  const element = document.getElementById(provasfondo);
 
-  new Vibrant(albumCover)
-    .getPalette()
-    .then((palette) => {
-      const vibrantColor = palette.Vibrant.getHex();
-      element.style.backgroundColor = vibrantColor;
-    })
-    .catch((err) => {
-      console.error("Errore nell'estrazione dei colori: ", err);
-    });
-}
-document.addEventListener("DOMContentLoaded", function () {
-  const storedData = localStorage.getItem("searchResult");
-  const albums = JSON.parse(storedData);
-  if (albums && albums.length > 0) {
-    const firstAlbumCover = albums[0].albumCover;
-    setColorFromImage(firstAlbumCover, "provasfondo");
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
   }
-});
+  container.classList.toggle("active");
+}
