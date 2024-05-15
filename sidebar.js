@@ -84,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let fotoAlbum = document.getElementById("fotoAlbum");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
-
+    Array.from(artistaAlbums).forEach(
+      (artista) => (artista.textContent = firstAlbum.artistName)
+    );
     fotoAlbum.src = firstAlbum.albumCover;
   }
   //escludere elementi ripetuti nell'array
