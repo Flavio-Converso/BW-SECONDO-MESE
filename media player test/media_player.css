@@ -5,17 +5,8 @@
     font-family: "circular std book", sans-serif;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #222;
-    font-size: 14px;
-}
-
 .music-player {
     --primary-color: #ddd;
-    --secondary-color: #999;
-    --green-color: #2d5;
     --padding: 1em;
     background-color: #111;
     position: fixed;
@@ -23,7 +14,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width:100%;
     background-color: #333;
     padding: 20px;
     box-sizing: border-box;
@@ -41,14 +32,13 @@ i:hover {
 
 .song-bar {
     position: absolute;
-    left: var(--padding);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 1.5rem;
     width: 100%;
-    padding: 0 var(--padding);
+    padding: .5vw;
 }
 
 .song-infos {
@@ -75,7 +65,7 @@ i:hover {
 }
 
 .song-description p {
-    margin: 0.2em;
+    margin: 0.2vw;
 }
 
 .title,
@@ -112,7 +102,7 @@ i:hover {
     display: flex;
     align-items: center;
     gap: 2em;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .play-pause {
@@ -221,6 +211,7 @@ i:hover {
         margin-bottom: 2vh;
         border-radius: 2.8vh;
         width: 90%;
+        height: 8%;
         position: fixed; /* Aggiunto */
         bottom: 5.6vh;
         left:2vh
@@ -232,7 +223,7 @@ i:hover {
 
     .song-infos img {
         position: relative;
-        left:0vh;
+        left:2vh;
         box-shadow: .2vh .1vh 2vh black;
         bottom:1.5vh;
         z-index: 2000;
@@ -241,7 +232,7 @@ i:hover {
     .progress-container {
         width: 320%; /* Modificato */
         position: relative;
-        top: 3.5vh;
+        top: 2.2vh;
     }
 
     #randomBtn,
@@ -281,7 +272,7 @@ i:hover {
     #playPauseBtn {
         position: absolute;
         right: 4vh;
-        top: 2vh;
+        top: 1vh;
     }
 
     .current-time,
@@ -294,6 +285,21 @@ i:hover {
         margin-bottom: 2vh;
         border-radius: 3vh;
         width: 90%;
+        height: 8vh;
+    }
+    #playPauseBtn {
+        position: absolute;
+        right: 5vh;
+        top: .8vh;
+    }
+    .song-infos img {
+        position: relative;
+        left:2vh;
+        width: 5vh;
+        height: 5vh;
+        box-shadow: .2vh .1vh 2vh black;
+        bottom:1vh;
+        z-index: 2000;
     }
 
     .other-features {
@@ -304,7 +310,7 @@ i:hover {
     .progress-container {
         width: 320%; /* Modificato */
         position: relative;
-        top: 3.5vh;
+        top: 2.2vh;
     }
 
     .current-time,
