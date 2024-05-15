@@ -179,7 +179,7 @@
                                             <div class="position-relative">
                                                 <img src="https://placedog.net/300" class="card-img-top" alt="..." />
                                                 <div class="play-badge2">
-                                                    <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
+                                                    <img class="playButton" src="../assets/imgs/svg/play-fill.svg"
                                                         alt="play button" />
                                                 </div>
                                             </div>
@@ -207,14 +207,14 @@
             <div class="music-player overflow-hidden shadow ">
                 <div class="song-bar">
                     <div class="song-infos d-flex justify-content-center mt-4">
-                        <div class="image-container">
-                            <a href="https://google.com"><img src="https://place-hold.it/200" alt="" /></a>
+                        <div class="image-container album-image">
+                            <a href="https://google.com"><img src="" alt="" id="media-image"/></a>
                         </div>
                         <div class="overflow-hidden " id="desc_div">
                             <div class="song-description">
-                                <p class="title fs-6 ">Place Holder</p>
-                                <p class="divider">-</p>
-                                <p class="artist">Place Holder</p>
+                                <p class="title fs-6 "></p>
+                                <p class="divider" id="divisore">&nbsp;-&nbsp;</p>
+                                <p class="artist"></p>
                             </div>
                         </div>
                     </div>
@@ -235,9 +235,9 @@
                         <div class="progress-bar bg-secondary ">
                             <div class="progress"></div>
                             <div class="progress-reference"></div>
-                            <audio src="./Interstellar Official Soundtrack  Cornfield Chase – Hans Zimmer  WaterTower.mp3"></audio>
+                            <audio src="" id="audio-player"></audio>
                         </div>
-                        <span class="total-time ms-2"></span>
+                        <span class="total-time ms-2">--.--</span>
                     </div>
                 </div>
                 <div class="other-features">
@@ -255,8 +255,7 @@
             </div>
         </div>
     </main>
-    <script src="../sidebar.js"></script>
-    <script src="./media_player.js"></script>
+    <script src="./sidebar.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
