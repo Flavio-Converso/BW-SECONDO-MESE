@@ -211,6 +211,9 @@ i:hover {
 .active {
     color: green;
 }
+.play-button-card{
+    z-index: 100000000;
+}
 
 @media screen and (max-width: 767px) {
     .music-player {
