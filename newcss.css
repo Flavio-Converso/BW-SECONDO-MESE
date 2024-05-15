@@ -44,20 +44,20 @@ main {
     background-color: black;
 }
 
-.playlist {
+.playlisT {
     height: 64%;
     overflow: auto;
 }
 
-.playlist p {
-    font-size: 9px;
+.playlisT p {
+    font-size: 14px;
 }
 
-.playlist::-webkit-scrollbar {
+.playlisT::-webkit-scrollbar {
     width: 9px;
 }
 
-.playlist::-webkit-scrollbar-thumb {
+.playlisT::-webkit-scrollbar-thumb {
     background: #272727;
     /* Colore del pollice della scrollbar */
 }
@@ -175,7 +175,7 @@ main {
         max-width: 95%;
     }
 
-    .playlist {
+    .playlisT {
         display: none;
     }
 
