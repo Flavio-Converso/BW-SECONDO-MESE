@@ -29,7 +29,17 @@ function store(dati) {
     const albumTitle = element.album.title;
     const artistName = element.artist.name;
     const albumCover = element.album.cover_medium;
-    const previewUrl = element.preview;
+    let previewUrl = element.album.preview;
+
+    // Cerca l'URL dell'anteprima audio in altre proprietà se non è presente direttamente sotto element.preview
+    if (element.preview) {
+      previewUrl = element.preview;
+    } else if (element.preview_medium) {
+      previewUrl = element.preview_medium;
+    } else if (element.preview_high) {
+      previewUrl = element.preview_high;
+    }
+
     const album = {
       albumTitle: albumTitle,
       artistName: artistName,
@@ -424,7 +434,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const audioPlayer = document.getElementById("audio-player");
       if (firstAlbum.preview) {
         mediaPlayerImage.style.display = "block";
-        divider.style.display = "block";
         const playPauseButton = document.querySelector(".play-pause");
         playPauseButton.classList.remove("fa-play");
         playPauseButton.classList.add("fa-pause");
@@ -476,7 +485,6 @@ document.addEventListener("DOMContentLoaded", function () {
       mediaPlayerTitle.textContent = album.albumTitle;
       mediaPlayerArtist.textContent = album.artistName;
       if (album.preview) {
-        divider.style.display = "block";
         mediaPlayerImage.style.display = "block";
         const playPauseButton = document.querySelector(".play-pause");
         playPauseButton.classList.remove("fa-play");

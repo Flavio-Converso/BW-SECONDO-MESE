@@ -207,12 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
-
-    // Esegui la funzione all'avvio e ogni volta che la finestra viene ridimensionata
-    removeDividerOnResize(); // Esegui subito al caricamento della pagina
-    window.addEventListener('resize', removeDividerOnResize); // Esegui ogni volta che la finestra viene ridimensionata
-
     // Definisci una funzione per gestire l'inizio del trascinamento
     function startDrag(e) {
         isDragging = true;

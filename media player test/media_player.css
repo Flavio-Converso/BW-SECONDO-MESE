@@ -91,7 +91,9 @@ i:hover {
     display: flex;
     gap: 1em;
 }
-
+#divisore{
+    display: none;
+}
 .progress-controller {
     width: 100%;
     display: flex;
@@ -220,7 +222,9 @@ i:hover {
         bottom: 5.6vh;
         left:2vh
     }
-
+    #divisore{
+        display: inline-block;
+    }
     .other-features {
         display: none;
     }
