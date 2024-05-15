@@ -20,11 +20,8 @@
     width: 100%;
 }
 
-#rows-tracks-list {
-    background: rgb(208, 179, 75);
-    background: linear-gradient(180deg,
-            rgba(208, 179, 75, 1) 0%,
-            rgba(0, 0, 0, 1) 23%);
+#container-tracks {
+    background: rgba(0, 0, 0, 1) 23%
 }
 
 .grey-light {

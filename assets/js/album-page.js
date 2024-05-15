@@ -79,59 +79,27 @@ const albumHtml = function (album) {
 
 getAlbumWithId();
 
-function setColorGradient(albumCoverBig, elementId) {
-  const element = document.getElementById(elementId);
+function setColorGradient(albumCoverBig, bgDinamico) {
+  const element = document.getElementById(bgDinamico);
 
   new Vibrant(albumCoverBig)
     .getPalette()
     .then((palette) => {
-      const colors = [
-        palette.Vibrant.getRgb(),
-        palette.DarkVibrant.getRgb(),
-        palette.LightVibrant.getRgb(),
-        palette.Muted.getRgb(),
-      ];
+      // Preparazione della stringa del gradiente
+      const gradientColors = [
+        palette.Vibrant.getHex(),
+        palette.DarkVibrant.getHex(),
+        palette.LightVibrant.getHex(),
+        palette.Muted.getHex(),
+      ].join(", ");
 
-      // Calcola la media dei colori RGB
-      let avgR = 0,
-        avgG = 0,
-        avgB = 0;
-      colors.forEach((color) => {
-        avgR += color[0];
-        avgG += color[1];
-        avgB += color[2];
-      });
-      avgR /= colors.length;
-      avgG /= colors.length;
-      avgB /= colors.length;
-
-      // Converti RGB mediato in HEX
-      const avgColorHex = rgbToHex(
-        Math.round(avgR),
-        Math.round(avgG),
-        Math.round(avgB)
-      );
-
-      // Applica un gradiente lineare
-      element.style.backgroundImage = `linear-gradient(to right, ${palette.Vibrant.getHex()}, ${avgColorHex})`;
+      // Applica un gradiente lineare che include tutti i colori
+      element.style.backgroundImage = `linear-gradient(to top, ${gradientColors})`;
     })
     .catch((err) => {
       console.error("Errore nell'estrazione dei colori: ", err);
     });
 }
-
-function rgbToHex(r, g, b) {
-  return (
-    "#" +
-    [r, g, b]
-      .map((x) => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      })
-      .join("")
-  );
-}
-
 //function setColorFromImage(albumCoverBig, bgDinamico) {
 //  const element = document.getElementById(bgDinamico);
 //
