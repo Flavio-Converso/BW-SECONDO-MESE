@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+  localStorage.setItem("searchResult", JSON.stringify(albums));
   console.log(albums);
 
   for (let i = 1; i <= 10; i++) {

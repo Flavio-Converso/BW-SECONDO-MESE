@@ -1,47 +1,50 @@
 #foto-artista {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-}
-#title {
-  font-size: 2em;
-  font-weight: bold;
-}
-#description > p {
-  font-size: 0.7em;
-}
-#color-yellow {
-  background-color: #d0b34b;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }
 
-#header-album > img {
-  width: 100%;
+#title {
+    font-size: 2em;
+    font-weight: bold;
 }
+
+#description>p {
+    font-size: 0.7em;
+}
+
+/*rimosso background statico header*/
+#header-album>img {
+    width: 100%;
+}
+
 #rows-tracks-list {
-  background: rgb(208, 179, 75);
-  background: linear-gradient(
-    180deg,
-    rgba(208, 179, 75, 1) 0%,
-    rgba(0, 0, 0, 1) 23%
-  );
+    background: rgb(208, 179, 75);
+    background: linear-gradient(180deg,
+            rgba(208, 179, 75, 1) 0%,
+            rgba(0, 0, 0, 1) 23%);
 }
+
 .grey-light {
-  color: rgb(146, 146, 146);
+    color: rgb(146, 146, 146);
 }
+
 #play {
-  font-size: 2em;
+    font-size: 2em;
 }
+
 #icon {
-  height: 60px;
+    height: 60px;
 }
 
 @media screen and (min-width: 767px) {
-  #header-album-page > img {
-    width: 70%;
-  }
+    #header-album-page>img {
+        width: 70%;
+    }
 }
+
 @media screen and (min-width: 991px) {
-  #header-album-page > img {
-    width: 30%;
-  }
+    #header-album-page>img {
+        width: 30%;
+    }
 }
