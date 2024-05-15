@@ -30,12 +30,16 @@ function store(dati) {
     const artistName = element.artist.name;
     const albumCover = element.album.cover_medium;
     const albumId = element.album.id;
+    const pictureArtist = element.artist.picture_medium;
+    const artistId = element.artist.id;
 
     const album = {
       albumTitle: albumTitle,
       artistName: artistName,
       albumCover: albumCover,
       albumId: albumId,
+      pictureArtist: pictureArtist,
+      artistId: artistId,
     };
 
     albums.push(album);
@@ -138,5 +142,51 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
               </a>`;
     document.getElementById("printHorizontalCards").appendChild(card);
+  }
+  const rowArtistsList = document.getElementById("row-artists-list");
+  const selectedArtists = new Set(); // Set per tracciare gli artisti selezionati
+
+  for (let j = 0; j < 4; j++) {
+    if (selectedArtists.size >= albums.length) break; // Esci dal ciclo se non ci sono più artisti unici disponibili
+
+    let randomIndex;
+    let selectedAlbum;
+
+    // Trova un album con un artista non ancora selezionato
+    do {
+      randomIndex = Math.floor(Math.random() * albums.length);
+      selectedAlbum = albums[randomIndex];
+    } while (selectedArtists.has(selectedAlbum.artistName));
+
+    // Aggiungi l'artista selezionato al set
+    selectedArtists.add(selectedAlbum.artistName);
+    console.log(selectedAlbum);
+
+    const colCardArtist = document.createElement("div");
+    colCardArtist.classList.add("col", "mb-3");
+    colCardArtist.innerHTML = `
+      <a href="./artist-page.html?id=${selectedAlbum.artistId}" class="text-decoration-none">
+        <div class="card grey-vertical-card p-2">
+          <div class="position-relative">
+            <img
+              src="${selectedAlbum.pictureArtist}"
+              class="card-img-top"
+              alt="Foto artista"
+            />
+            <div class="play-badge2">
+              <img
+                class="playButton"
+                src="./assets/imgs/svg/three-dots.svg"
+                alt="play button"
+              />
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-white text-center ">${selectedAlbum.artistName}</h5>
+          </div>
+        </div>
+      </a>`;
+
+    rowArtistsList.appendChild(colCardArtist);
   }
 });
