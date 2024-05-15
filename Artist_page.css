@@ -43,3 +43,19 @@ main{color: white;}
 }
 
 .arrow{width: 30px;}
+
+.play-badge3 {
+  position: absolute;
+  top: 1px;
+  left: 1rem;
+  background-color: #16e05d;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: translateY(15px);
+  transition: opacity 0.2s, transform 0.2s;
+}
