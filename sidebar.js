@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>
                   </div>
               </a>
-              </div>`;
+              `;
     document.getElementById("printHorizontalCards").appendChild(card);
   }
 });
