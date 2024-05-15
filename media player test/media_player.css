@@ -51,7 +51,10 @@ i:hover {
     --size: 4.5em;
     flex-shrink: 0;
     width: 6vh;
-    height: 6vh;
+    height: 6vh;;
+}
+.divider{
+    display: none;
 }
 
 .image-container img {
@@ -62,6 +65,7 @@ i:hover {
     box-shadow: .2vh .1vh 2vh black;
     bottom:1.5vh;
     z-index: 2000;
+    display: none;
 }
 
 .song-description p {
