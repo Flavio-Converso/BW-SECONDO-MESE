@@ -17,7 +17,15 @@ header{
   width: 106%;
 }
 
-main{background-color: black;
-      color: white;}
+main{color: white;}
 
 .immaginetta {width: 5em;}
+
+#grad1 {
+  background-image: linear-gradient(	#535353, #121212);
+}
+
+.fotoProfilo{
+  width: 6em;
+  border-radius: 50%;
+}
