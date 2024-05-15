@@ -42,7 +42,6 @@ function store(dati) {
 }
 
 // Funzione che fa la ricerca con la fetch
-
 function search(searchInput, callback) {
   fetch(
     "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + searchInput
@@ -124,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           </div>
                       </div>
                       <div class="play-badge">
-                          <img class="playButton" src="/assets/imgs/svg/play-fill.svg"
+                          <img class="playButton" src="./assets/imgs/svg/play-fill.svg"
                               alt="play button" />
                       </div>
                   </div>
