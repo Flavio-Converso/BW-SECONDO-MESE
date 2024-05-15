@@ -13,7 +13,9 @@
     font-size: 0.7em;
 }
 
-/*rimosso background statico header*/
+/*rimosso background statico header #bg-dinamico {}*/
+
+
 #header-album>img {
     width: 100%;
 }
