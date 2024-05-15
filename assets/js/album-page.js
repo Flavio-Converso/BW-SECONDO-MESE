@@ -34,7 +34,8 @@ const albumHtml = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
   const realeaseYear = album.release_date.split("-");
   const imgAlbum = document.querySelector("#header-album-page > img");
-  imgAlbum.setAttribute("src", album.cover_big);
+  const albumCoverBig = album.cover_big;
+  imgAlbum.setAttribute("src", albumCoverBig);
   const title = document.querySelector("#header-album-page #title");
   title.innerHTML = album.title;
   const imgArtist = document.querySelector("#description > img");
@@ -48,6 +49,8 @@ const albumHtml = function (album) {
     album.duration % 60
   } sec</span></span>
     `;
+  //setColorFromImage(albumCoverBig, "bgDinamico");
+  setColorGradient(albumCoverBig, "bgDinamico");
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
   const containerTracks = document.getElementById("container-tracks");
@@ -75,3 +78,75 @@ const albumHtml = function (album) {
 };
 
 getAlbumWithId();
+
+function setColorGradient(albumCoverBig, elementId) {
+  const element = document.getElementById(elementId);
+
+  new Vibrant(albumCoverBig)
+    .getPalette()
+    .then((palette) => {
+      const colors = [
+        palette.Vibrant.getRgb(),
+        palette.DarkVibrant.getRgb(),
+        palette.LightVibrant.getRgb(),
+        palette.Muted.getRgb(),
+      ];
+
+      // Calcola la media dei colori RGB
+      let avgR = 0,
+        avgG = 0,
+        avgB = 0;
+      colors.forEach((color) => {
+        avgR += color[0];
+        avgG += color[1];
+        avgB += color[2];
+      });
+      avgR /= colors.length;
+      avgG /= colors.length;
+      avgB /= colors.length;
+
+      // Converti RGB mediato in HEX
+      const avgColorHex = rgbToHex(
+        Math.round(avgR),
+        Math.round(avgG),
+        Math.round(avgB)
+      );
+
+      // Applica un gradiente lineare
+      element.style.backgroundImage = `linear-gradient(to right, ${palette.Vibrant.getHex()}, ${avgColorHex})`;
+    })
+    .catch((err) => {
+      console.error("Errore nell'estrazione dei colori: ", err);
+    });
+}
+
+function rgbToHex(r, g, b) {
+  return (
+    "#" +
+    [r, g, b]
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      })
+      .join("")
+  );
+}
+
+//function setColorFromImage(albumCoverBig, bgDinamico) {
+//  const element = document.getElementById(bgDinamico);
+//
+//  new Vibrant(albumCoverBig)
+//    .getPalette()
+//    .then((palette) => {
+//      console.log(palette); // Questo loggherà tutti i colori disponibili
+//      const vibrantColor = palette.Vibrant.getHex(); // Colore vibrante principale
+//      const lightVibrantColor = palette.LightVibrant.getHex(); // Colore vibrante chiaro
+//      const darkVibrantColor = palette.DarkVibrant.getHex(); // Colore vibrante scuro
+//      // Applica il colore di tua scelta
+//      element.style.backgroundColor = lightVibrantColor; // Qui puoi cambiare quale colore usare
+//    })
+//    .catch((err) => {
+//      console.error("Errore nell'estrazione dei colori: ", err);
+//    });
+//}
+//
