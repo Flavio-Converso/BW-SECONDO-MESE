@@ -36,7 +36,7 @@ const albumHtml = function (album) {
   const imgAlbum = document.querySelector("#header-album-page > img");
   const albumCoverBig = album.cover_big;
   imgAlbum.setAttribute("src", albumCoverBig);
-  const title = document.querySelector("#header-album-page #title");
+  const title = document.querySelector("#header-album-page #titlE");
   title.innerHTML = album.title;
   const imgArtist = document.querySelector("#description > img");
   imgArtist.setAttribute("src", album.artist.picture);
@@ -53,7 +53,7 @@ const albumHtml = function (album) {
   setColorGradient(albumCoverBig, "bgDinamico");
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
-  const containerTracks = document.getElementById("container-tracks");
+  const containerTracks = document.getElementById("containeR-trackS");
   album.tracks.data.forEach((track, i) => {
     console.log(track);
     const rowTrack = document.createElement("div");

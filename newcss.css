@@ -312,4 +312,55 @@ input {
 */
 
 
-/*TEST*/
+/*PAGINA ALBUM*/
+#foto-artistA {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#titlE {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#description>p {
+    font-size: 0.7em;
+}
+
+/*rimosso background statico header #bg-dinamico {}*/
+
+
+#header-album>img {
+    width: 100%;
+}
+
+#containeR-trackS {
+    background: rgba(0, 0, 0, 1) 23%
+}
+
+.grey-light {
+    color: rgb(146, 146, 146);
+}
+
+#plaY {
+    font-size: 2em;
+}
+
+#icoN {
+    height: 60px;
+}
+
+@media screen and (min-width: 767px) {
+    #header-album-page>img {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    #header-album-page>img {
+        width: 30%;
+    }
+}
+
+/*fine pagina album*/
