@@ -1,6 +1,10 @@
+const addressBarContent = new URLSearchParams(location.search);
+console.log(addressBarContent);
+const albumId = addressBarContent.get("id");
+console.log(albumId);
+
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-const idAlbum = "335573467";
-const url = apiUrl + idAlbum;
+const url = apiUrl + albumId;
 
 // funzione per recuperare i dati dell'album tramite il suo id
 const getAlbumWithId = function () {
@@ -14,7 +18,11 @@ const getAlbumWithId = function () {
     })
     .then((alb) => {
       console.log(alb);
-      albumHtml(alb);
+      if (albumId) {
+        albumHtml(alb);
+      } else {
+        console.log("nessun album trovato");
+      }
     })
     .catch((err) => {
       console.log("ERRORE", err);

@@ -29,10 +29,13 @@ function store(dati) {
     const albumTitle = element.album.title;
     const artistName = element.artist.name;
     const albumCover = element.album.cover_medium;
+    const albumId = element.album.id;
+
     const album = {
       albumTitle: albumTitle,
       artistName: artistName,
       albumCover: albumCover,
+      albumId: albumId,
     };
 
     albums.push(album);
@@ -84,12 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let titoloAlbum = document.getElementById("titoloAlbum");
     let artistaAlbums = document.getElementById("artistaAlbum");
     let fotoAlbum = document.getElementById("fotoAlbum");
+    const fotofirstAlbum = document.getElementById("first-album");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
     Array.from(artistaAlbums).forEach(
       (artista) => (artista.textContent = firstAlbum.artistName)
     );
-    fotoAlbum.src = firstAlbum.albumCover;
+    fotofirstAlbum.innerHTML = `
+      <a href="./album-page.html?id=${firstAlbum.albumId}">
+        <img id="fotoAlbum" src="${firstAlbum.albumCover}" alt="immagine album" class="img-fluid py-3"/>
+      </a>`;
   }
   //escludere elementi ripetuti nell'array
   for (let i = 0; i < albums.length; i++) {
@@ -106,20 +113,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let card = document.createElement("div");
     card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
     card.innerHTML = `
-              <a href="#" class="text-decoration-none">
+              <a href="./album-page.html?id=${albums[i].albumId}" class="text-decoration-none">
                   <div class="card mb-3 grey-horizontal-card position-relative ">
                       <div class="row ">
                           <div class="col d-flex align-items-center">
                               <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
                                   alt="immagine album" />
                           </div>
-                          <div class="col d-flex align-items-center">
-                              <div class="card-body">
-                                  <h5 id="titoloHorizontalCard"
-                                      class="card-title d-flex justify-content-center text-white">
-                                      ${albums[i].albumTitle}
-                                  </h5>
-                              </div>
+                          <div>
+                            <div class="col d-flex align-items-center">
+                                <div class="card-body">
+                                    <h5 id="titoloHorizontalCard"
+                                        class="card-title d-flex justify-content-center text-white">
+                                        ${albums[i].albumTitle}
+                                    </h5>
+                                </div>
+                            </div>
                           </div>
                       </div>
                       <div class="play-badge">
@@ -127,8 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
                               alt="play button" />
                       </div>
                   </div>
-              </a>
-              </div>`;
+              </a>`;
     document.getElementById("printHorizontalCards").appendChild(card);
   }
 });
