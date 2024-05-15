@@ -35,11 +35,17 @@
                             </div>
 
                             <div class="d-flex searchBox align-items-center mb-3">
-                                <input id="search" type="text" placeholder=" Cerca" />
+                                <div class="search-container">
+                                    <a href="#bottom" class="search-icon" onclick="toggleSearchInput()"><i
+                                            class="bi bi-search icon-spacing icon"></i><span id="cerca">Cerca</span></a>
+
+                                    <input id="search" type="text" class="search-input" placeholder="   Cerca" />
+                                </div>
                             </div>
 
                             <div class="d-flex gap-3 align-items-center mb-4">
-                                <button class="btn p-0 text-light bi bi-book-half icon"></button>
+                                <a href="#"><img id="library" src="./assets/imgs/svg/libreria.png" alt="" />
+                                </a>
                                 <a href="#" class="text-decoration-none text-light d-none d-sm-block">La tua
                                     libreria</a>
                             </div>
@@ -47,21 +53,21 @@
 
                         <div class="d-none menu2 d-sm-flex flex-column">
                             <div class="d-flex gap-3 align-items-center mb-2 mt-2">
-                                <button class="btn p-0 text-light bi bi-file-plus-fill"></button>
-
-                                <a href="#" class="text-decoration-none text-light">Crea playlist</a>
+                                <a href="#"><img src="./assets/imgs/svg/playlist.png" alt="" />
+                                </a>
+                                <a href="#">Crea playlist</a>
                             </div>
 
                             <div class="d-flex gap-3 align-items-center mb-2">
-                                <button class="btn p-0 text-light bi bi-calendar-heart"></button>
-                                <a href="#" class="text-decoration-none text-light">Brani che ti piacciono
+                                <a href="#"><img src="./assets/imgs/svg/brani.png" alt="" />
                                 </a>
+                                <a href="#">Brani che ti piacciono</a>
                             </div>
 
-                            <div class="d-flex gap-3 align-items-center">
-                                <button class="btn p-0 text-light bi bi-bookmark-fill"></button>
-
-                                <a href="#" class="text-decoration-none text-light">I tuoi preferiti</a>
+                            <div class="d-flex gap-3 align-items-center mb-2">
+                                <a href="#"><img src="./assets/imgs/svg/episodi.png" alt="" />
+                                </a>
+                                <a href="">I tuoi preferiti</a>
                             </div>
                         </div>
                     </div>
@@ -96,7 +102,7 @@
                     </div>
                 </div>
                 <!-- COLONNA CENTRALE -->
-                <div class="col sm-12 col-md-9 col-lg-7 central p-0 "><!--CAMBIA QUI BG-->
+                <div class="col sm-12 col-md-9 col-lg-7 central p-0 grey-bg">
                     <div id="bgDinamico">
                         <div class="d-flex justify-content-between mb-4 px-4">
                             <!--top-->
@@ -142,17 +148,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center" id="icoN">
-                            <span class="ms-3 me-4" id="plaY"><i class="fas fa-play-circle"></i></span>
-                            <span class="me-2"><i class="far fa-heart"></i></span>
-                            <span class="me-2"><i class="far fa-arrow-alt-circle-down"></i></span>
-                            <span class="me-2"><i class="fas fa-ellipsis-h"></i></span>
-                        </div>
+
                     </div>
                     <div class="d-flex flex-column text-light" id="rows-tracks-list">
 
                         <div class="container" id="containeR-trackS">
                             <div class="row border-bottom">
+                                <div class="d-flex align-items-center" id="icoN">
+                                    <div class="play-badge3">
+                                        <img class="playButton" src="./assets/imgs/svg/play-fill.svg"
+                                            alt="play button" />
+                                    </div>
+                                    <span class="me-2"><i class="far fa-heart"></i></span>
+                                    <span class="me-2"><i class="far fa-arrow-alt-circle-down"></i></span>
+                                    <span class="me-2"><i class="fas fa-ellipsis-h"></i></span>
+                                </div>
                                 <div class="col-1 text-end ps-0">
                                     <p class="m-0">#</p>
                                 </div>

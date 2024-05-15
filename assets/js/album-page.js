@@ -100,21 +100,15 @@ function setColorGradient(albumCoverBig, bgDinamico) {
       console.error("Errore nell'estrazione dei colori: ", err);
     });
 }
-//function setColorFromImage(albumCoverBig, bgDinamico) {
-//  const element = document.getElementById(bgDinamico);
-//
-//  new Vibrant(albumCoverBig)
-//    .getPalette()
-//    .then((palette) => {
-//      console.log(palette); // Questo loggherà tutti i colori disponibili
-//      const vibrantColor = palette.Vibrant.getHex(); // Colore vibrante principale
-//      const lightVibrantColor = palette.LightVibrant.getHex(); // Colore vibrante chiaro
-//      const darkVibrantColor = palette.DarkVibrant.getHex(); // Colore vibrante scuro
-//      // Applica il colore di tua scelta
-//      element.style.backgroundColor = lightVibrantColor; // Qui puoi cambiare quale colore usare
-//    })
-//    .catch((err) => {
-//      console.error("Errore nell'estrazione dei colori: ", err);
-//    });
-//}
-//
+
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
+  }
+  container.classList.toggle("active");
+}
