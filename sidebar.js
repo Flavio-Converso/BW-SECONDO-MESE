@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
     card.innerHTML = `
               <a href="./album-page.html?id=${albums[i].albumId}" class="text-decoration-none">
-                  <div class="card mb-3 grey-horizontal-card position-relative ">
+                  <div class="card mb-3 grey-horizontal-card position-relative h-100 ">
                       <div class="row ">
                           <div class="col-lg-12 col-xl d-flex align-items-center">
                               <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
