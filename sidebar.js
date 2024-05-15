@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (albums && albums.length > 0) {
     const firstAlbum = albums[0];
     let titoloAlbum = document.getElementById("titoloAlbum");
-    let artistaAlbums = document.getElementById("artistaAlbum");
+    let artistaAlbums = document.getElementsByClassName("artistaAlbum");
     let fotoAlbum = document.getElementById("fotoAlbum");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
-    artistaAlbum.textContent = artistaAlbum.artistName;
+
     fotoAlbum.src = firstAlbum.albumCover;
   }
   //escludere elementi ripetuti nell'array
