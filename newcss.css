@@ -1,3 +1,5 @@
+/*************** CSS DI ANDREA *****************/
+
 html {
     height: 100vh;
     width: 100%;
@@ -42,20 +44,20 @@ main {
     background-color: black;
 }
 
-.playlist {
+.playlisT {
     height: 64%;
     overflow: auto;
 }
 
-.playlist p {
-    font-size: 9px;
+.playlisT p {
+    font-size: 14px;
 }
 
-.playlist::-webkit-scrollbar {
+.playlisT::-webkit-scrollbar {
     width: 9px;
 }
 
-.playlist::-webkit-scrollbar-thumb {
+.playlisT::-webkit-scrollbar-thumb {
     background: #272727;
     /* Colore del pollice della scrollbar */
 }
@@ -81,10 +83,50 @@ main {
     /* Rimuove l'outline al focus */
 }
 
+.menu2 a {
+    text-decoration: none;
+    color: white;
+}
+
+#cerca {
+    text-decoration: none;
+    color: white;
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.menu1 a {
+    text-decoration: none;
+}
+
+.icon-spacing {
+    margin-right: 17px;
+    color: white;
+}
+
+.search-input {
+    display: none;
+    padding: 0;
+    /*  border: 1px solid #5c5959;*/
+    border-radius: 15px;
+    transition: opacity 0.3s ease, width 0.3s ease;
+    width: 0;
+    opacity: 0;
+}
+
+.search-container.active .search-input {
+    display: inline-block;
+    width: 15vw;
+    opacity: 1;
+}
+
 /* Quando si va sotto i 992px scompare la colonna dx e i caratteri diventano più piccoli */
 @media screen and (max-width: 992px) {
     .column-dx {
         display: none;
+        text-decoration: none;
     }
 
     .menu1,
@@ -133,10 +175,32 @@ main {
         max-width: 95%;
     }
 
-    .playlist {
+    .playlisT {
         display: none;
     }
+
+    #cerca {
+        display: none;
+    }
+
+    #library {
+        height: 30px;
+    }
+
+    #search {
+        margin-bottom: 19px;
+    }
 }
+
+input {
+    background-color: rgb(20, 19, 19);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    max-width: 95%;
+}
+
+/*************   CSS DI FLAVIO *************/
 
 .green-spotify {
     color: #16e05d;
@@ -163,11 +227,11 @@ main {
 }
 
 .small-text {
-    font-size: 13px
+    font-size: 13px;
 }
 
 .small-text2 {
-    font-size: 15px
+    font-size: 15px;
 }
 
 .gradient-main-card {
@@ -274,6 +338,16 @@ main {
     transition: opacity 0.2s, transform 0.2s;
 }
 
+.play-badge3 {
+    background-color: #16e05d;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    opacity: 1;
+    margin-right: 6px;
+}
+
 .card:hover .play-badge2 {
     opacity: 1;
     transform: translateY(0);
@@ -293,24 +367,15 @@ main {
     transform: scale(1.1);
 }
 
-input {
-    background-color: rgb(20, 19, 19);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    max-width: 95%;
-}
-
 /*
-       <button class="btn p-0 text-light bi bi-search icon"></button>
-                <a
-                  href="#"
-                  class="text-decoration-none text-light d-none d-sm-block"
-                  >Cerca</a
-                >
-
-*/
-
+         <button class="btn p-0 text-light bi bi-search icon"></button>
+                  <a
+                    href="#"
+                    class="text-decoration-none text-light d-none d-sm-block"
+                    >Cerca</a
+                  >
+  
+  */
 
 /*PAGINA ALBUM*/
 #foto-artistA {
@@ -328,13 +393,19 @@ input {
     font-size: 0.7em;
 }
 
-/*rimosso background statico header #bg-dinamico {}*/
+#dropdownUtente {
+    background-color: black !important;
+}
 
+#dropdownUtente:hover {
+    background-color: black !important;
+}
+
+/*rimosso background statico header #bg-dinamico {}*/
 
 #header-album>img {
     width: 100%;
 }
-
 
 
 .grey-light {
