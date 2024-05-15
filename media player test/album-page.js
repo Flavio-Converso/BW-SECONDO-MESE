@@ -34,26 +34,21 @@ const albumHtml = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
   const realeaseYear = album.release_date.split("-");
   const imgAlbum = document.querySelector("#header-album-page > img");
-  const albumCoverBig = album.cover_big;
-  imgAlbum.setAttribute("src", albumCoverBig);
-  const title = document.querySelector("#header-album-page #titlE");
+  imgAlbum.setAttribute("src", album.cover_big);
+  const title = document.querySelector("#header-album-page #title");
   title.innerHTML = album.title;
   const imgArtist = document.querySelector("#description > img");
   imgArtist.setAttribute("src", album.artist.picture);
   const description = document.querySelector("#description > p");
   const descriptionMobile = document.querySelector("#description > p");
   description.innerHTML = `
-    ${album.artist.name} <span class="">- ${realeaseYear[0]} - ${
-    album.nb_tracks
-  } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${
-    album.duration % 60
-  } sec</span></span>
+    ${album.artist.name} <span class="">- ${realeaseYear[0]} - ${album.nb_tracks
+    } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${album.duration % 60
+    } sec</span></span>
     `;
-  //setColorFromImage(albumCoverBig, "bgDinamico");
-  setColorGradient(albumCoverBig, "bgDinamico");
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
-  const containerTracks = document.getElementById("containeR-trackS");
+  const containerTracks = document.getElementById("container-tracks");
   album.tracks.data.forEach((track, i) => {
     console.log(track);
     const rowTrack = document.createElement("div");
@@ -79,42 +74,4 @@ const albumHtml = function (album) {
 
 getAlbumWithId();
 
-function setColorGradient(albumCoverBig, bgDinamico) {
-  const element = document.getElementById(bgDinamico);
 
-  new Vibrant(albumCoverBig)
-    .getPalette()
-    .then((palette) => {
-      // Preparazione della stringa del gradiente
-      const gradientColors = [
-        palette.Vibrant.getHex(),
-        palette.DarkVibrant.getHex(),
-        palette.LightVibrant.getHex(),
-        palette.Muted.getHex(),
-      ].join(", ");
-
-      // Applica un gradiente lineare che include tutti i colori
-      element.style.backgroundImage = `linear-gradient(to top, ${gradientColors})`;
-    })
-    .catch((err) => {
-      console.error("Errore nell'estrazione dei colori: ", err);
-    });
-}
-//function setColorFromImage(albumCoverBig, bgDinamico) {
-//  const element = document.getElementById(bgDinamico);
-//
-//  new Vibrant(albumCoverBig)
-//    .getPalette()
-//    .then((palette) => {
-//      console.log(palette); // Questo loggherà tutti i colori disponibili
-//      const vibrantColor = palette.Vibrant.getHex(); // Colore vibrante principale
-//      const lightVibrantColor = palette.LightVibrant.getHex(); // Colore vibrante chiaro
-//      const darkVibrantColor = palette.DarkVibrant.getHex(); // Colore vibrante scuro
-//      // Applica il colore di tua scelta
-//      element.style.backgroundColor = lightVibrantColor; // Qui puoi cambiare quale colore usare
-//    })
-//    .catch((err) => {
-//      console.error("Errore nell'estrazione dei colori: ", err);
-//    });
-//}
-//

@@ -197,15 +197,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Definisci una funzione per rimuovere l'elemento 'divider' quando la larghezza supera i 768px
     function removeDividerOnResize() {
         if (window.innerWidth >= 768) {
-            var elementsToRemove = document.getElementsByClassName('divider');
-            for (var i = 0; i < elementsToRemove.length; i++) {
-                var element = elementsToRemove[i];
-                if (element && element.parentNode) {
-                    element.parentNode.removeChild(element);
+            var elementsToHide = document.getElementsByClassName('divider');
+            for (var i = 0; i < elementsToHide.length; i++) {
+                var element = elementsToHide[i];
+                if (element) {
+                    element.style.display = 'none'; // Nascondi l'elemento impostando il display a 'none'
                 }
             }
         }
     }
+
 
 
     // Esegui la funzione all'avvio e ogni volta che la finestra viene ridimensionata
@@ -239,32 +240,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-
-
-
-
-
-
-
-//PROVE 
-//FUNZIONE RICERCA
-function search(searchInput) {
-    fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + searchInput
-    )
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Errore nel recupero dei dettagli dell'evento");
-            }
-        })
-        .then((searchResult) => {
-            console.log(searchResult);
-            store(searchResult);
-        })
-        .catch((err) => {
-            console.log("ERRORE", err);
-        });
-}
