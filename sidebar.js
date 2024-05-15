@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   localStorage.setItem("searchResult", JSON.stringify(albums));
   console.log(albums);
 
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 12; i++) {
     let card = document.createElement("div");
     card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
     card.innerHTML = `
