@@ -13,10 +13,6 @@ header{
   left: 1em !important;
 }
 
-#artistaHeader p{
-  width: 106%;
-}
-
 main{color: white;}
 
 .immaginetta {width: 5em;}
@@ -44,3 +40,5 @@ main{color: white;}
 }
 
 .arrow{width: 30px;}
+
+.size {font-size: 4rem !important;}
