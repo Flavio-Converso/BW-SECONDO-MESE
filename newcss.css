@@ -338,6 +338,16 @@ input {
     transition: opacity 0.2s, transform 0.2s;
 }
 
+.play-badge3 {
+    background-color: #16e05d;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    opacity: 1;
+    margin-right: 5px;
+}
+
 .card:hover .play-badge2 {
     opacity: 1;
     transform: translateY(0);
