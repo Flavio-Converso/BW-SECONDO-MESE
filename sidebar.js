@@ -79,9 +79,6 @@ document.getElementById("search").addEventListener("keydown", function (event) {
   }
 });
 
-let titoloAlbum = document.getElementById("titoloAlbum");
-let artistaAlbum = document.getElementsByClassName("artistaAlbum");
-let fotoAlbum = document.getElementById("fotoAlbum");
 document.addEventListener("DOMContentLoaded", function () {
   const storedData = localStorage.getItem("searchResult");
 
@@ -89,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (albums && albums.length > 0) {
     const firstAlbum = albums[0];
     let titoloAlbum = document.getElementById("titoloAlbum");
-    let artistaAlbums = document.getElementById("artistaAlbum");
+    let artistaAlbums = document.getElementsByClassName("artistaAlbum");
     let fotoAlbum = document.getElementById("fotoAlbum");
     const fotofirstAlbum = document.getElementById("first-album");
 
@@ -120,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <a href="./album-page.html?id=${albums[i].albumId}" class="text-decoration-none">
                   <div class="card mb-3 grey-horizontal-card position-relative ">
                       <div class="row ">
-                          <div class="col d-flex align-items-center">
+                          <div class="col-lg-12 col-xl d-flex align-items-center">
                               <img src="${albums[i].albumCover}" class="personal-imG rounded-start"
                                   alt="immagine album" />
                           </div>
