@@ -151,14 +151,14 @@ document.addEventListener("DOMContentLoaded", function () {
         randomIndex = Math.floor(Math.random() * albums.length);
         selectedAlbum = albums[randomIndex];
       } while (selectedArtists.has(selectedAlbum.artistName));
+    }
+    // Aggiungi l'artista selezionato al set
+    selectedArtists.add(selectedAlbum.artistName);
+    console.log(selectedAlbum);
 
-      // Aggiungi l'artista selezionato al set
-      selectedArtists.add(selectedAlbum.artistName);
-      console.log(selectedAlbum);
-
-      const colCardArtist = document.createElement("div");
-      colCardArtist.classList.add("col", "mb-3");
-      colCardArtist.innerHTML = `
+    const colCardArtist = document.createElement("div");
+    colCardArtist.classList.add("col", "mb-3");
+    colCardArtist.innerHTML = `
       <a href="./Artist_page_1.html?id=${selectedAlbum.artistId}" class="text-decoration-none">
         <div class="card grey-vertical-card p-2">
           <div class="position-relative">
@@ -181,8 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </a>`;
 
-      rowArtistsList.appendChild(colCardArtist);
-    }
+    rowArtistsList.appendChild(colCardArtist);
   }
 });
 function toggleSearchInput() {
