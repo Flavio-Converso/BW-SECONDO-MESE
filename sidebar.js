@@ -73,9 +73,6 @@ document.getElementById("search").addEventListener("keydown", function (event) {
   }
 });
 
-let titoloAlbum = document.getElementById("titoloAlbum");
-let artistaAlbum = document.getElementsByClassName("artistaAlbum");
-let fotoAlbum = document.getElementById("fotoAlbum");
 document.addEventListener("DOMContentLoaded", function () {
   const storedData = localStorage.getItem("searchResult");
 
@@ -87,9 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let fotoAlbum = document.getElementById("fotoAlbum");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
-    Array.from(artistaAlbums).forEach(
-      (artista) => (artista.textContent = firstAlbum.artistName)
-    );
+    artistaAlbum.textContent = artistaAlbum.artistName;
     fotoAlbum.src = firstAlbum.albumCover;
   }
   //escludere elementi ripetuti nell'array
