@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstAlbum = albums[0];
     let titoloAlbum = document.getElementById("titoloAlbum");
     let artistaAlbums = document.getElementsByClassName("artistaAlbum");
-    let fotoAlbum = document.getElementById("fotoAlbum");
     const fotofirstAlbum = document.getElementById("first-album");
 
     titoloAlbum.textContent = firstAlbum.albumTitle;
