@@ -187,3 +187,14 @@ document.addEventListener("DOMContentLoaded", function () {
     rowArtistsList.appendChild(colCardArtist);
   }
 });
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
+  }
+  container.classList.toggle("active");
+}
