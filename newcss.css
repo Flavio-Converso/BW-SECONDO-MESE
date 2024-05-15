@@ -345,7 +345,7 @@ input {
     border-radius: 50%;
     display: flex;
     opacity: 1;
-    margin-right: 5px;
+    margin-right: 6px;
 }
 
 .card:hover .play-badge2 {
