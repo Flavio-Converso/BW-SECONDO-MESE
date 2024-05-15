@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const colCardArtist = document.createElement("div");
     colCardArtist.classList.add("col", "mb-3");
     colCardArtist.innerHTML = `
-      <a href="./artist-page.html?id=${selectedAlbum.artistId}" class="text-decoration-none">
+      <a href="./Artist_page_1.html?id=${selectedAlbum.artistId}" class="text-decoration-none">
         <div class="card grey-vertical-card p-2">
           <div class="position-relative">
             <img
