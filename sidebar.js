@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("searchResult", JSON.stringify(albums));
     console.log(albums);
 
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= albums.length - 1; i++) {
       let card = document.createElement("div");
       card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
       card.innerHTML = `
@@ -141,24 +141,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const rowArtistsList = document.getElementById("row-artists-list");
     const selectedArtists = new Set(); // Set per tracciare gli artisti selezionati
-    let randomIndex;
-    let selectedAlbum;
+
     for (let j = 0; j < 4; j++) {
       if (selectedArtists.size >= albums.length) break; // Esci dal ciclo se non ci sono più artisti unici disponibili
-
+      let randomIndex;
+      let selectedAlbum;
       // Trova un album con un artista non ancora selezionato
       do {
         randomIndex = Math.floor(Math.random() * albums.length);
         selectedAlbum = albums[randomIndex];
       } while (selectedArtists.has(selectedAlbum.artistName));
-    }
-    // Aggiungi l'artista selezionato al set
-    selectedArtists.add(selectedAlbum.artistName);
-    console.log(selectedAlbum);
 
-    const colCardArtist = document.createElement("div");
-    colCardArtist.classList.add("col", "mb-3");
-    colCardArtist.innerHTML = `
+      // Aggiungi l'artista selezionato al set
+      selectedArtists.add(selectedAlbum.artistName);
+      console.log("selectedAlbum", selectedAlbum);
+
+      const colCardArtist = document.createElement("div");
+      colCardArtist.classList.add("col", "mb-3");
+      colCardArtist.innerHTML = `
       <a href="./Artist_page_1.html?id=${selectedAlbum.artistId}" class="text-decoration-none">
         <div class="card grey-vertical-card p-2">
           <div class="position-relative">
@@ -181,7 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </a>`;
 
-    rowArtistsList.appendChild(colCardArtist);
+      rowArtistsList.appendChild(colCardArtist);
+    }
   }
 });
 function toggleSearchInput() {
@@ -195,7 +196,3 @@ function toggleSearchInput() {
   }
   container.classList.toggle("active");
 }
-//
-//
-//
-//

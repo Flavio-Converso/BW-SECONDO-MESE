@@ -38,8 +38,8 @@ const getTracksArtist = function () {
       }
     })
     .then((tracksArray) => {
-      console.log(arr);
-      if (arr) {
+      console.log(tracksArray);
+      if (tracksArray) {
       } else {
         console.log("nessun album trovato");
       }
@@ -48,8 +48,16 @@ const getTracksArtist = function () {
       console.log("ERRORE", err);
     });
 };
-const tracksArtistHtml = function (tracks) {
-  tracks.array.forEach((element) => {});
-};
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
+  }
+  container.classList.toggle("active");
+}
 getArtistWithId();
 getTracksArtist();
