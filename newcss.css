@@ -393,6 +393,10 @@ input {
     font-size: 0.7em;
 }
 
+#tendinaUtente:hover {
+    background-color: black !important;
+}
+
 /*rimosso background statico header #bg-dinamico {}*/
 
 #header-album>img {
