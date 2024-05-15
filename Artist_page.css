@@ -1,48 +1,53 @@
-
-header{
-  position :relative
+header {
+  position: relative;
 }
 
-  .verified{
-    color: aqua !important;
-  }
+.verified {
+  color: aqua !important;
+}
 
-#artistaHeader{   
+#artistaHeader {
   position: absolute !important;
   bottom: 1em !important;
   left: 1em !important;
 }
 
-#artistaHeader p{
+#artistaHeader p {
   width: 106%;
 }
 
-main{color: white;}
-
-.immaginetta {width: 5em;}
-
-#grad1 {
-  background-image: linear-gradient(	#535353, #121212);
+main {
+  color: white;
 }
 
-.fotoProfilo{
-   min-width: 3em;
+.immaginetta {
+  width: 5em;
+}
+
+#grad1 {
+  background-image: linear-gradient(#535353, #121212);
+}
+
+.fotoProfilo {
+  min-width: 3em;
   border-radius: 50%;
 }
 
-#dropDownArtista{
+#dropDownArtista {
   position: absolute;
   top: 5px;
   right: 1px;
 }
 
-#search{
+#search {
   position: absolute;
   top: 5px;
   left: 3px;
 }
 
-.arrow{width: 30px;}
+.arrow {
+  width: 30px;
+}
 
 .play-badge3 {
   position: absolute;
