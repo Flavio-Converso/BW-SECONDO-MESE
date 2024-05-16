@@ -68,7 +68,9 @@ const albumHtml = function (album) {
             <p class="m-0">123</p>
         </div>
         <div class="col-1 p-0 d-flex align-items-center justify-content-center">
-            <p class="m-0">${(track.duration / 60).toFixed(2)}</p>
+            <p class="m-0">${Math.floor(track.duration / 60)}:${
+      track.duration % 60
+    }</p>
         </div>
         `;
     containerTracks.appendChild(rowTrack);
