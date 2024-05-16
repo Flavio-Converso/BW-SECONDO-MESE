@@ -176,11 +176,11 @@
                       </li>
                     </ul>
                   </div>
-                  <img
-                    src="./assets/imgs/la-mia-musica-su-spotify-come-fare.jpg"
-                    class="img-fluid w-100"
-                  />
+                  <!--
+                  <div class="bg-artist"></div>-->
+                  <img id="sfondo-artista" src="" class="img-fluid w-100" />
                   <!--Dentro a questa src andrà inserito tramite JS l'url per ottenere l'immagine dell'artista-->
+
                   <div id="artistaHeader">
                     <div class="row align-items-center mb-3">
                       <div class="col-2">
@@ -202,12 +202,14 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <h1 class="text-white size">Artista</h1>
+                      <h1 class="artist-name" class="text-white size">
+                        Artista
+                      </h1>
                     </div>
                     <div class="d-flex align-items-center">
-                      <p class="text-white">6192832</p>
+                      <p id="fans" class="text-white">6192832</p>
                       <!--qui andranno inseriti gli ascoltatori mensili-->
-                      <p class="text-white mx-2">Ascoltatori mensili</p>
+                      <p class="text-white mx-2">FANS</p>
                     </div>
                   </div>
                 </header>
@@ -231,59 +233,9 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-12 col-md-8 px-0 ps-2">
+                    <div class="col-12 col-md-8 px-0 ps-2" id="div-popolari">
                       <div class="row ps-3">
                         <h4 class="fw-bold">Popolari</h4>
-                      </div>
-                      <div class="row align-items-center mt-3">
-                        <p class="col-1 mb-0 grid ms-4">1</p>
-                        <img
-                          src="./assets/imgs/main/image-1.jpg"
-                          class="immaginetta img-fluid"
-                        />
-                        <p class="col-2 flex-grow-1">Ocean Avenue</p>
-                        <p class="col-1 flex-grow-1">238957</p>
-                        <p class="col-1 flex-grow-1">3:12</p>
-                      </div>
-                      <div class="row align-items-center mt-3">
-                        <p class="col-1 mb-0 grid ms-4">2</p>
-                        <img
-                          src="./assets/imgs/main/image-1.jpg"
-                          class="immaginetta img-fluid"
-                        />
-                        <p class="col-2 flex-grow-1">Ocean Avenue</p>
-                        <p class="col-1 flex-grow-1">238957</p>
-                        <p class="col-1 flex-grow-1">3:12</p>
-                      </div>
-                      <div class="row align-items-center mt-3">
-                        <p class="col-1 mb-0 grid ms-4">3</p>
-                        <img
-                          src="./assets/imgs/main/image-1.jpg"
-                          class="immaginetta img-fluid"
-                        />
-                        <p class="col-2 flex-grow-1">Ocean Avenue</p>
-                        <p class="col-1 flex-grow-1">238957</p>
-                        <p class="col-1 flex-grow-1">3:12</p>
-                      </div>
-                      <div class="row align-items-center mt-3">
-                        <p class="col-1 mb-0 grid ms-4">4</p>
-                        <img
-                          src="./assets/imgs/main/image-1.jpg"
-                          class="immaginetta img-fluid"
-                        />
-                        <p class="col-2 flex-grow-1">Ocean Avenue</p>
-                        <p class="col-1 flex-grow-1">238957</p>
-                        <p class="col-1 flex-grow-1">3:12</p>
-                      </div>
-                      <div class="row align-items-center mt-3">
-                        <p class="col-1 mb-0 grid ms-4">5</p>
-                        <img
-                          src="./assets/imgs/main/image-1.jpg"
-                          class="immaginetta img-fluid"
-                        />
-                        <p class="col-2 flex-grow-1">Ocean Avenue</p>
-                        <p class="col-1 flex-grow-1">238957</p>
-                        <p class="col-1 flex-grow-1">3:12</p>
                       </div>
                       <div class="row mt-3 ms-2">
                         <p>VISUALIZZA ALTRO</p>
@@ -300,7 +252,7 @@
                         </div>
                         <div class="col">
                           <p>Hai messo Mi Piace a 11 brani</p>
-                          <p>Di Artista</p>
+                          <p class="artist-name">Di Artista</p>
                         </div>
                       </div>
                     </div>
