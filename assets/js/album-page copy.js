@@ -179,6 +179,5 @@ function toggleSearchInput() {
   }
   container.classList.toggle("active");
 }
-
 // Richiama la funzione per ottenere e visualizzare l'album con l'id specificato
 getAlbumWithId();
