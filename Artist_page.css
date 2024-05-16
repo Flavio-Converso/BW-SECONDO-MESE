@@ -64,3 +64,14 @@ main {
   transform: translateY(15px);
   transition: opacity 0.2s, transform 0.2s;
 }
+
+.bg-artist {
+  height: 60%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/*
+#sfondo-artista {
+}*/
