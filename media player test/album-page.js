@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <p class="ms-0">${track.trackNumber}</p>
       </div>
       <div class="col-1 p-0 d-flex align-items-center justify-content-center">
-        <button class="bg-transparent text-white border-0 play-button" type="button" data-index="${i}"> play </button>
+        <button class="bg-transparent border-0 play-button " type="button" data-index="${i}"><i class="bi bi-play-fill fs-1"></i></button>
       </div>
       <div class="col-6 p-0">
         <h5 class="m-0 fw-bold">${track.title}</h5>
