@@ -150,7 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
       do {
         randomIndex = Math.floor(Math.random() * albums.length);
         selectedAlbum = albums[randomIndex];
-      } while (selectedArtists.has(selectedAlbum.artistName));
+      } while (
+        selectedArtists.has(selectedAlbum.artistName) &&
+        selectedArtists.size < albums.length
+      );
 
       // Aggiungi l'artista selezionato al set
       selectedArtists.add(selectedAlbum.artistName);
