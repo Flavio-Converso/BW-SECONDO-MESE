@@ -194,18 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 
-    // Definisci una funzione per rimuovere l'elemento 'divider' quando la larghezza supera i 768px
-    function removeDividerOnResize() {
-        if (window.innerWidth >= 768) {
-            var elementsToHide = document.getElementsByClassName('divider');
-            for (var i = 0; i < elementsToHide.length; i++) {
-                var element = elementsToHide[i];
-                if (element) {
-                    element.style.display = 'none'; // Nascondi l'elemento impostando il display a 'none'
-                }
-            }
-        }
-    }
 
     // Definisci una funzione per gestire l'inizio del trascinamento
     function startDrag(e) {
@@ -231,6 +219,26 @@ document.addEventListener("DOMContentLoaded", function () {
             audioElement.currentTime = duration * relativeClickX;
         }
     }
+    function updateTimeDisplays() {
+        const currentTimeDisplay = document.querySelector(".current-time");
+        const totalTimeDisplay = document.querySelector(".total-time");
 
+        if (audioElement && !isNaN(audioElement.duration)) {
+            const currentTime = audioElement.currentTime;
+            const totalTime = audioElement.duration;
+            const formattedCurrentTime = formatTime(currentTime);
+            const formattedTotalTime = formatTime(totalTime);
+
+            currentTimeDisplay.textContent = formattedCurrentTime;
+            totalTimeDisplay.textContent = formattedTotalTime;
+        } else {
+            // Se non c'è un elemento audio o se la durata non è un numero, mostra "--.--"
+            currentTimeDisplay.textContent = "--:--";
+            totalTimeDisplay.textContent = "--:--";
+        }
+    }
 });
+
+
+
 
