@@ -10,7 +10,7 @@
     --padding: 1em;
     background-color: #111;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,7 +91,9 @@ i:hover {
     display: flex;
     gap: 1em;
 }
-
+#divisore{
+    display: none;
+}
 .progress-controller {
     width: 100%;
     display: flex;
@@ -209,6 +211,9 @@ i:hover {
 .active {
     color: green;
 }
+.play-button-card{
+    z-index: 100000000;
+}
 
 @media screen and (max-width: 767px) {
     .music-player {
@@ -220,7 +225,9 @@ i:hover {
         bottom: 5.6vh;
         left:2vh
     }
-
+    #divisore{
+        display: inline-block;
+    }
     .other-features {
         display: none;
     }

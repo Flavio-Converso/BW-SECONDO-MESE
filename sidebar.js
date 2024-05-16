@@ -143,16 +143,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedArtists = new Set(); // Set per tracciare gli artisti selezionati
 
     for (let j = 0; j < 4; j++) {
-      if (selectedArtists.size >= albums.length) break; // Esci dal ciclo se non ci sono più artisti unici disponibili
+      if (selectedArtists.size >= albums.length) break; // Exit the loop if there are no more unique artists available
       let randomIndex;
       let selectedAlbum;
-      // Trova un album con un artista non ancora selezionato
+      let attempts = 0; // Add a counter for attempts to find a unique artist
+
+      // Find an album with an artist not yet selected
       do {
         randomIndex = Math.floor(Math.random() * albums.length);
         selectedAlbum = albums[randomIndex];
-      } while (selectedArtists.has(selectedAlbum.artistName));
+        attempts++; // Increment the attempts counter
 
-      // Aggiungi l'artista selezionato al set
+        // If we've attempted to find a unique artist more times than there are albums, break the loop
+        if (attempts > albums.length) break;
+      } while (
+        selectedArtists.has(selectedAlbum.artistName) &&
+        selectedArtists.size < albums.length
+      );
+
+      // Add the selected artist to the set
       selectedArtists.add(selectedAlbum.artistName);
       console.log("selectedAlbum", selectedAlbum);
 
