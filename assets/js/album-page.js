@@ -43,11 +43,9 @@ const albumHtml = function (album) {
   const description = document.querySelector("#description > p");
   const descriptionMobile = document.querySelector("#description > p");
   description.innerHTML = `
-    ${album.artist.name} <span class="">- ${realeaseYear[0]} - ${
-    album.nb_tracks
-  } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${
-    album.duration % 60
-  } sec</span></span>
+    ${album.artist.name} <span class="">- ${realeaseYear[0]} - ${album.nb_tracks
+    } brani, <span class="grey-light">${Math.floor(album.duration / 60)} min ${album.duration % 60
+    } sec</span></span>
     `;
   //setColorFromImage(albumCoverBig, "bgDinamico");
   setColorGradient(albumCoverBig, "bgDinamico");
