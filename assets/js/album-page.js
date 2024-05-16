@@ -36,7 +36,7 @@ const albumHtml = function (album) {
   const imgAlbum = document.querySelector("#header-album-page > img");
   const albumCoverBig = album.cover_big;
   imgAlbum.setAttribute("src", albumCoverBig);
-  const title = document.querySelector("#header-album-page #title");
+  const title = document.querySelector("#header-album-page #titlE");
   title.innerHTML = album.title;
   const imgArtist = document.querySelector("#description > img");
   imgArtist.setAttribute("src", album.artist.picture);
@@ -51,7 +51,7 @@ const albumHtml = function (album) {
   setColorGradient(albumCoverBig, "bgDinamico");
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
-  const containerTracks = document.getElementById("container-tracks");
+  const containerTracks = document.getElementById("containeR-trackS");
   album.tracks.data.forEach((track, i) => {
     console.log(track);
     const rowTrack = document.createElement("div");
@@ -98,21 +98,15 @@ function setColorGradient(albumCoverBig, bgDinamico) {
       console.error("Errore nell'estrazione dei colori: ", err);
     });
 }
-//function setColorFromImage(albumCoverBig, bgDinamico) {
-//  const element = document.getElementById(bgDinamico);
-//
-//  new Vibrant(albumCoverBig)
-//    .getPalette()
-//    .then((palette) => {
-//      console.log(palette); // Questo loggherà tutti i colori disponibili
-//      const vibrantColor = palette.Vibrant.getHex(); // Colore vibrante principale
-//      const lightVibrantColor = palette.LightVibrant.getHex(); // Colore vibrante chiaro
-//      const darkVibrantColor = palette.DarkVibrant.getHex(); // Colore vibrante scuro
-//      // Applica il colore di tua scelta
-//      element.style.backgroundColor = lightVibrantColor; // Qui puoi cambiare quale colore usare
-//    })
-//    .catch((err) => {
-//      console.error("Errore nell'estrazione dei colori: ", err);
-//    });
-//}
-//
+
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
+  }
+  container.classList.toggle("active");
+}

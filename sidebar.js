@@ -96,23 +96,23 @@ document.addEventListener("DOMContentLoaded", function () {
       <a href="./album-page.html?id=${firstAlbum.albumId}">
         <img id="fotoAlbum" src="${firstAlbum.albumCover}" alt="immagine album" class="img-fluid py-3"/>
       </a>`;
-  }
-  //escludere elementi ripetuti nell'array
-  for (let i = 0; i < albums.length; i++) {
-    for (let n = i + 1; n < albums.length; n++) {
-      if (albums[i].albumTitle === albums[n].albumTitle) {
-        albums.splice(n, 1);
-        n--;
+
+    //escludere elementi ripetuti nell'array
+    for (let i = 0; i < albums.length; i++) {
+      for (let n = i + 1; n < albums.length; n++) {
+        if (albums[i].albumTitle === albums[n].albumTitle) {
+          albums.splice(n, 1);
+          n--;
+        }
       }
     }
-  }
-  localStorage.setItem("searchResult", JSON.stringify(albums));
-  console.log(albums);
+    localStorage.setItem("searchResult", JSON.stringify(albums));
+    console.log(albums);
 
-  for (let i = 1; i <= 10; i++) {
-    let card = document.createElement("div");
-    card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
-    card.innerHTML = `
+    for (let i = 1; i <= 12; i++) {
+      let card = document.createElement("div");
+      card.classList.add("col-12", "col-sm-6", "col-lg-3", "col-xl-4", "mt-3");
+      card.innerHTML = `
               <a href="./album-page.html?id=${albums[i].albumId}" class="text-decoration-none">
                   <div class="card mb-3 grey-horizontal-card position-relative h-100 ">
                       <div class="row ">
@@ -137,23 +137,21 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>
                   </div>
               </a>`;
-    document.getElementById("printHorizontalCards").appendChild(card);
-  }
-  const rowArtistsList = document.getElementById("row-artists-list");
-  const selectedArtists = new Set(); // Set per tracciare gli artisti selezionati
-
-  for (let j = 0; j < 4; j++) {
-    if (selectedArtists.size >= albums.length) break; // Esci dal ciclo se non ci sono più artisti unici disponibili
-
+      document.getElementById("printHorizontalCards").appendChild(card);
+    }
+    const rowArtistsList = document.getElementById("row-artists-list");
+    const selectedArtists = new Set(); // Set per tracciare gli artisti selezionati
     let randomIndex;
     let selectedAlbum;
+    for (let j = 0; j < 4; j++) {
+      if (selectedArtists.size >= albums.length) break; // Esci dal ciclo se non ci sono più artisti unici disponibili
 
-    // Trova un album con un artista non ancora selezionato
-    do {
-      randomIndex = Math.floor(Math.random() * albums.length);
-      selectedAlbum = albums[randomIndex];
-    } while (selectedArtists.has(selectedAlbum.artistName));
-
+      // Trova un album con un artista non ancora selezionato
+      do {
+        randomIndex = Math.floor(Math.random() * albums.length);
+        selectedAlbum = albums[randomIndex];
+      } while (selectedArtists.has(selectedAlbum.artistName));
+    }
     // Aggiungi l'artista selezionato al set
     selectedArtists.add(selectedAlbum.artistName);
     console.log(selectedAlbum);
@@ -171,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
             />
             <div class="play-badge2">
               <img
-                class="playButton"
+                class="playButton2"
                 src="./assets/imgs/svg/three-dots.svg"
                 alt="play button"
               />
@@ -201,24 +199,3 @@ function toggleSearchInput() {
 //
 //
 //
-function setColorFromImage(albumCover, provasfondo) {
-  const element = document.getElementById(provasfondo);
-
-  new Vibrant(albumCover)
-    .getPalette()
-    .then((palette) => {
-      const vibrantColor = palette.Vibrant.getHex();
-      element.style.backgroundColor = vibrantColor;
-    })
-    .catch((err) => {
-      console.error("Errore nell'estrazione dei colori: ", err);
-    });
-}
-document.addEventListener("DOMContentLoaded", function () {
-  const storedData = localStorage.getItem("searchResult");
-  const albums = JSON.parse(storedData);
-  if (albums && albums.length > 0) {
-    const firstAlbumCover = albums[0].albumCover;
-    setColorFromImage(firstAlbumCover, "provasfondo");
-  }
-});
