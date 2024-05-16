@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const addressBarContent = new URLSearchParams(location.search);
   console.log(addressBarContent);
-  const albumId = "567720961";  //addressBarContent.get("id");
+  const albumId = addressBarContent.get("id");
   console.log(albumId);
 
   const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
