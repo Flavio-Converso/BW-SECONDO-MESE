@@ -19,9 +19,9 @@ const getAlbumWithId = function () {
     .then((alb) => {
       console.log(alb);
       if (albumId) {
-        albumHtml(alb);
+        renderAlbum(alb);
       } else {
-        console.log("nessun album trovato");
+        console.log("Nessun album trovato");
       }
     })
     .catch((err) => {
@@ -29,8 +29,8 @@ const getAlbumWithId = function () {
     });
 };
 
-// Funzione che genera l'HTML per visualizzare l'album con tutte le tracce
-const albumHtml = function (album) {
+// Funzione per generare l'HTML per visualizzare l'album con tutte le tracce
+const renderAlbum = function (album) {
   const colBodyAlbumPage = document.getElementById("header-album-page");
   const realeaseYear = album.release_date.split("-");
   const imgAlbum = document.querySelector("#header-album-page > img");
@@ -52,6 +52,8 @@ const albumHtml = function (album) {
   //descriptionMobile.innerHTML = `<p>Album &middot; ${realeaseYear[0]}<p>`;
   // Genera tutte le tracce dell'album all'interno della sezione rowTrack
 
+  const containerTracks = document.getElementById("containeR-trackS");
+  // Crea un array di oggetti rappresentanti le tracce dell'album
   const tracksArray = [];
   for (let i = 0; i < album.tracks.data.length; i++) {
     const track = album.tracks.data[i];
@@ -63,7 +65,6 @@ const albumHtml = function (album) {
       preview: track.preview // Aggiungiamo la proprietà preview
     });
   }
-  const containerTracks = document.getElementById("containeR-trackS");
   // Salviamo l'array delle tracce in localStorage
   localStorage.setItem('albumTracks', JSON.stringify(tracksArray));
 
@@ -91,68 +92,32 @@ const albumHtml = function (album) {
     `;
     containerTracks.appendChild(rowTrack);
   });
+
+  // Ascolta il click del bottone di riproduzione della traccia
+  containerTracks.addEventListener("click", function (event) {
+    // Verifica se l'elemento cliccato è un bottone di riproduzione
+    if (event.target.matches(".play-button")) {
+      // Ottieni l'indice della traccia dal suo attributo data-index
+      const trackIndex = event.target.closest(".row").querySelector(".play-button").getAttribute("data-index");
+
+      // Assicurati che tracksArray sia definito e che contenga almeno un elemento
+      if (tracksArray && tracksArray.length > trackIndex && tracksArray[trackIndex].preview) {
+        // Ottieni l'URL della preview della traccia selezionata
+        const previewUrl = tracksArray[trackIndex].preview;
+        const title = tracksArray[trackIndex].title;
+        const artist = tracksArray[trackIndex].artist;
+
+        // Esegui la riproduzione della traccia
+        playTrack(album, title, artist, previewUrl);
+      } else {
+        console.error("Errore: L'elemento tracksArray non è definito o non contiene un elemento con la proprietà 'preview'");
+      }
+    }
+  });
 };
 
-getAlbumWithId();
-
-function setColorGradient(albumCoverBig, bgDinamico) {
-  const element = document.getElementById(bgDinamico);
-
-  new Vibrant(albumCoverBig)
-    .getPalette()
-    .then((palette) => {
-      // Preparazione della stringa del gradiente
-      const gradientColors = [
-        palette.Vibrant.getHex(),
-        palette.DarkVibrant.getHex(),
-        palette.LightVibrant.getHex(),
-        palette.Muted.getHex(),
-      ].join(", ");
-
-      // Applica un gradiente lineare che include tutti i colori
-      element.style.backgroundImage = `linear-gradient(to top, ${gradientColors})`;
-    })
-    .catch((err) => {
-      console.error("Errore nell'estrazione dei colori: ", err);
-    });
-}
-
-function toggleSearchInput() {
-  let container = document.querySelector(".search-container");
-  let cercaText = document.getElementById("cerca").innerText;
-  console.log(cercaText);
-  if (cercaText === "Cerca") {
-    document.getElementById("cerca").innerText = " ";
-  } else {
-    document.getElementById("cerca").innerText = "Cerca";
-  }
-  container.classList.toggle("active");
-}
-
-// Al click del bottone di riproduzione della traccia
-document.getElementById("containeR-trackS").addEventListener("click", function (event) {
-  // Verifica se l'elemento cliccato è un bottone di riproduzione
-  if (event.target.matches(".play-button")) {
-    // Ottieni l'indice della traccia dal suo attributo data-index
-    const trackIndex = event.target.closest(".row").querySelector(".play-button").getAttribute("data-index");
-
-    // Assicurati che tracksArray sia definito e che contenga almeno un elemento
-    if (tracksArray && tracksArray.length > trackIndex && tracksArray[trackIndex].preview) {
-      // Ottieni l'URL della preview della traccia selezionata
-      const previewUrl = tracksArray[trackIndex].preview;
-      const title = tracksArray[trackIndex].title;
-      const artist = tracksArray[trackIndex].artist;
-
-      // Passa la variabile alb alla funzione che gestisce il click del bottone
-      albumHtml(alb, title, artist, previewUrl);
-    } else {
-      console.error("Errore: L'elemento tracksArray non è definito o non contiene un elemento con la proprietà 'preview'");
-    }
-  }
-});
-
-// Funzione per gestire il click del bottone di riproduzione
-function albumHtml(album, title, artist, previewUrl) {
+// Funzione per eseguire la riproduzione della traccia
+function playTrack(album, title, artist, previewUrl) {
   if (album && album.cover_small) {
     // Ottieni l'URL della cover_small dell'album
     const coverUrl = album.cover_small;
@@ -178,3 +143,42 @@ function albumHtml(album, title, artist, previewUrl) {
     console.error("Errore: L'elemento alb non è definito o non contiene una proprietà 'cover_small'");
   }
 }
+
+// Funzione per impostare il gradiente del background in base all'immagine dell'album
+function setColorGradient(albumCoverBig, bgDinamico) {
+  const element = document.getElementById(bgDinamico);
+
+  new Vibrant(albumCoverBig)
+    .getPalette()
+    .then((palette) => {
+      // Preparazione della stringa del gradiente
+      const gradientColors = [
+        palette.Vibrant.getHex(),
+        palette.DarkVibrant.getHex(),
+        palette.LightVibrant.getHex(),
+        palette.Muted.getHex(),
+      ].join(", ");
+
+      // Applica un gradiente lineare che include tutti i colori
+      element.style.backgroundImage = `linear-gradient(to top, ${gradientColors})`;
+    })
+    .catch((err) => {
+      console.error("Errore nell'estrazione dei colori: ", err);
+    });
+}
+
+// Funzione per gestire la visualizzazione del campo di ricerca
+function toggleSearchInput() {
+  let container = document.querySelector(".search-container");
+  let cercaText = document.getElementById("cerca").innerText;
+  console.log(cercaText);
+  if (cercaText === "Cerca") {
+    document.getElementById("cerca").innerText = " ";
+  } else {
+    document.getElementById("cerca").innerText = "Cerca";
+  }
+  container.classList.toggle("active");
+}
+
+// Richiama la funzione per ottenere e visualizzare l'album con l'id specificato
+getAlbumWithId();
