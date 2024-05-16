@@ -10,7 +10,7 @@
     --padding: 1em;
     background-color: #111;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
